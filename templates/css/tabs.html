@@ -1,0 +1,90 @@
+<ion-view view-title="Ionic - Tabs">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+  <div class="IOimgsize">
+      
+      
+      <hr />
+<p><b>Ionic tabs</b> are most of the time used for mobile navigation. Styling is optimized for different platforms. This means that on android devices tabs will be placed at the top of the screen, while on IOS it will be at the bottom. There are different ways of creating tabs. During this tutorial we will show you how to achieve it.</p>
+<hr><h4>Simple Tabs</h4>
+<p>Simple tabs menu can be created with <b>tabs</b> class. Inside element that is using this class we need to add <b>tab-item</b> elements. Since tabs are usually used for navigation, we will use <b>&lt;a&gt;</b> tags for tab items. The example is showing menu with four tabs.</p>
+<pre class="prettyprint notranslate">
+&lt;div class = "tabs"&gt;
+   &lt;a class = "tab-item"&gt;
+      Tab 1
+   &lt;/a&gt;
+	
+   &lt;a class = "tab-item"&gt;
+      Tab 2
+   &lt;/a&gt;
+	
+   &lt;a class = "tab-item"&gt;
+      Tab 3
+   &lt;/a&gt;
+&lt;/div&gt;
+</pre>
+
+<hr><h4>Adding Icons</h4>
+<p>Ionic provides classes for adding icons to tabs. If you want your tabs to only have icons without any text there is <b>tabs-icon-only</b> class that should be added after <b>tabs</b> class. Of course you need to add icons you want to display.</p>
+<pre class="prettyprint notranslate">
+&lt;div class = "tabs tabs-icon-only"&gt;
+   &lt;a class = "tab-item"&gt;
+      &lt;i class = "icon ion-home"&gt;&lt;/i&gt;
+   &lt;/a&gt;
+	
+   &lt;a class = "tab-item"&gt;
+      &lt;i class = "icon ion-star"&gt;&lt;/i&gt;
+   &lt;/a&gt;
+	
+   &lt;a class = "tab-item"&gt;
+      &lt;i class = "icon ion-planet"&gt;&lt;/i&gt;
+   &lt;/a&gt;
+&lt;/div&gt;
+</pre>
+<p>You can also add icons and text together. <b>tabs-icon-top</b> and <b>tabs-icon-left</b> are classes that will place icon above or on the left side of respectively. Implementation is the same as the example before, we will just add new class and text that we want to use. Example below shows icons placed above text.</p>
+<pre class="prettyprint notranslate">
+&lt;div class = "tabs tabs-icon-top"&gt;
+   &lt;a class = "tab-item"&gt;
+      &lt;i class = "icon ion-home"&gt;&lt;/i&gt;
+      Tab 1
+   &lt;/a&gt;
+	
+   &lt;a class = "tab-item"&gt;
+      &lt;i class = "icon ion-star"&gt;&lt;/i&gt;
+      Tab 2
+   &lt;/a&gt;
+	
+   &lt;a class = "tab-item"&gt;
+      &lt;i class = "icon ion-planet"&gt;&lt;/i&gt;
+      Tab 3
+   &lt;/a&gt;
+	
+ &lt;/div&gt;
+</pre>
+<hr><h4>Stripped Tabs</h4>
+<p>Striped tabs can be created by adding container around our tabs with <b>tabs-striped</b> class. This class allows usage of <b>tabs-background</b> and <b>tabs-color</b> prefixes for adding some of The Ionic colors to tabs menu. In our example below we will use <b>tabs-background-positive</b> (blue) class to style background of our menu, and <b>tabs-color-light</b> (white) to style tab icons. Notice the difference between second tab that is active and the other two that aren't.</p>
+<pre class="prettyprint notranslate">
+&lt;div class = "tabs-striped tabs-background-positive tabs-color-light"&gt;
+   &lt;div class = "tabs"&gt;
+      &lt;a class = "tab-item"&gt;
+         &lt;i class = "icon ion-home"&gt;&lt;/i&gt;
+      &lt;/a&gt;
+		
+      &lt;a class = "tab-item active"&gt;
+         &lt;i class = "icon ion-star"&gt;&lt;/i&gt;
+      &lt;/a&gt;
+		
+      &lt;a class = "tab-item"&gt;
+         &lt;i class = "icon ion-planet"&gt;&lt;/i&gt;
+      &lt;/a&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<hr />
+
+      
+      
+      </div>
+      
+      <br><br>
+  </ion-content>
+</ion-view>

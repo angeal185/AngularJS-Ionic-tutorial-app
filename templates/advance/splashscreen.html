@@ -1,0 +1,24 @@
+<ion-view view-title="Ionic - Splash Screen">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         
+         <p>Every mobile app needs icon and splash screen. Ionic provides excellent solution for adding it and requires minimum work for the developers. Cropping and resizing is automated on Ionic server.</p><hr>
+<h4>Adding Splash Screen and Icon</h4>
+<p>In one of our first tutorials we showed you how to add different platforms for the Ionic app. By adding platform, Ionic will install Cordova splash screen plugin for that platform so we don't need to install anything afterwards. All we need to do is to find two images.</p>
+<p>Images should be <b>png</b>, <b>psd</b> or <b>ai</b> files. Minimum dimension should be 192x192 for icon image and 2208x2208 for splash screen image. This dimensions will cover all the devices. In our example we will use the same image for both. The images need to be saved to <b>resources</b> folder instead of default ones. After we are done with it, all we need is to run the following in command prompt window.</p>
+<pre class="result notranslate">
+C:\Users\Username\Desktop\MyApp>ionic resources
+</pre>
+<p>Now if you check <b>resources/android</b> or <b>resources/ios</b> folders you will see that images we added before are resized and cropped to accommodate different screen sizes. Now when we run our app on device we will see splash screen before the app is started and we will also see that default Ionic icon is changed.</p>
+<img src="././img/ionic-cordova-icon.jpg" alt="Ionic Cordova Icon" /><hr>
+<h4>NOTE</h4>
+<p>If you want to use different images for Android and IOS you can add it to <b>resources/android</b> and <b>resources/ios</b> instead of <b>resources</b> folder.</p>
+
+             
+         
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

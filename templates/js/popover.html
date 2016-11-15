@@ -1,0 +1,162 @@
+<ion-view view-title="Ionic - JS Popover">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p>This is a view that will appear above the regular view.</p><hr>
+<h4>Using Popover</h4>
+<p>Popover can be created by using <b>ion-popover-view</b> element. This element should be added to HTML template and <b>$ionicPopover</b> service needs to be injected into controller.</p>
+<p>There are three ways of adding popover. <b>fromTemplate</b> method allows using inline template.</p>
+<hr><h4>Controller Code</h3>
+<pre class="prettyprint notranslate">
+.controller('DashCtrl', function($scope, $ionicLoading, $ionicPopover) {
+   // .fromTemplate() method
+   var template = '&lt;ion-popover-view&gt;' + '&lt;ion-header-bar&gt;' +
+      '&lt;h1 class = "title"&gt;Popover Title&lt;/h1&gt;' +
+      '&lt;/ion-header-bar&gt;'+ '&lt;ion-content&gt;' +
+      'Popover Content!' + '&lt;/ion-content&gt;' + '&lt;/ion-popover-view&gt;';
+
+   $scope.popover = $ionicPopover.fromTemplate(template, {
+      scope: $scope
+   });
+
+   $scope.openPopover = function($event) {
+      $scope.popover.show($event);
+   };
+
+   $scope.closePopover = function() {
+      $scope.popover.hide();
+   };
+
+   //Cleanup the popover when we're done with it!
+   $scope.$on('$destroy', function() {
+      $scope.popover.remove();
+   });
+
+   // Execute action on hide popover
+   $scope.$on('popover.hidden', function() {
+      // Execute action
+   });
+
+   // Execute action on remove popover
+   $scope.$on('popover.removed', function() {
+      // Execute action
+   });
+})
+</pre>
+<p>The second and the third way of adding popover is to use <b>fromTemplateUrl</b> method. The controller code will be the same for both ways except the <b>fromTemplateUrl</b> value. If HTML is added to existing template, the url will be <b>popover.html</b>. If we want to place HTML into templates folder, then the url will change to <b>templates/popover.html</b>. Both examples can be seen below.</p>
+<hr><h4>Controller Code</h3>
+<pre class="prettyprint notranslate">
+.controller('MyCtrl', function($scope, $ionicPopover) {
+
+   $ionicPopover.fromTemplateUrl('popover.html', {
+      scope: $scope
+   }).then(function(popover) {
+      $scope.popover = popover;
+   });
+
+   $scope.openPopover = function($event) {
+      $scope.popover.show($event);
+   };
+
+   $scope.closePopover = function() {
+      $scope.popover.hide();
+   };
+
+   //Cleanup the popover when we're done with it!
+   $scope.$on('$destroy', function() {
+      $scope.popover.remove();
+   });
+
+   // Execute action on hide popover
+   $scope.$on('popover.hidden', function() {
+      // Execute action
+   });
+
+   // Execute action on remove popover
+   $scope.$on('popover.removed', function() {
+      // Execute action
+   });
+})
+</pre>
+<p>Now we will add <b>script</b> with template to the HTML file we are using for calling popover function.</p>
+<hr><h4>HTML code from Existing HTML file</h3>
+<pre class="prettyprint notranslate">
+&lt;script id = "popover.html" type = "text/ng-template"&gt;
+   &lt;ion-popover-view&gt;
+	
+      &lt;ion-header-bar&gt;
+         &lt;h1 class = "title"&gt;Popover Title&lt;/h1&gt;
+      &lt;/ion-header-bar&gt;
+		
+      &lt;ion-content&gt;
+         Popover Content!
+      &lt;/ion-content&gt;
+		
+   &lt;/ion-popover-view&gt;
+&lt;/script&gt;
+</pre>
+<p>If we want to create HTML as a separate file, we can create new HTML file in <b>templates</b> folder and use the same code as we used in the example above just without <b>script</b> tags.</p>
+<hr><h4>The new created HTML file</h3>
+<pre class="prettyprint notranslate">
+&lt;ion-popover-view&gt;
+   &lt;ion-header-bar&gt;
+       &lt;h1 class = "title"&gt;Popover Title&lt;/h1&gt;
+   &lt;/ion-header-bar&gt;
+	
+   &lt;ion-content&gt;
+      Popover Content!
+   &lt;/ion-content&gt;
+&lt;/ion-popover-view&gt;
+</pre>
+<p>The last thing we need is to create button that will be clicked to show popover.</p>
+<pre class="prettyprint notranslate">
+&lt;button class = "button" ng-click = "openPopover($event)"&gt;Add Popover&lt;/button&gt;
+</pre>
+<p>Whatever way we choose from above examples, the output will always be the same.</p>
+<p>The following table shows <b>$ionicPopover</b> methods that can be used.</p>
+<table class="table table-bordered" style="font-size:12px;">
+<tr>
+<th>Method</th>
+<th>Option</th>
+<th>Type</th>
+<th>Detail</th>       
+</tr>
+<tr>
+<th>initialize(opt)</th>
+<td>scope, focus First, backdrop Click To Close, hardware Back Button Close</td>
+<td>object, boolean, boolean, boolean</td>
+<td><b>scope</b> is used to pass custom scope to popover. Default is the $rootScope. <b>focusFirstInput</b> is used to auto focus the first input of the popover. <b>backdropClickToClose </b> is used to close popover when clicking the backdrop. <b>hardwareBackButtonClose</b> is used to close popover when hardware back button is pressed.</td>
+</tr>
+<tr>
+<th>show($event)</th>
+<td>$event</td>
+<td>promise</td>
+<td>Resolved when popover is finished showing.</td>
+</tr>
+<tr>
+<th>hide()</th>
+<td>/</td>
+<td>promise</td>
+<td>Resolved when popover is finished hiding.</td>
+</tr>
+<tr>
+<th>remove()</th>
+<td>/</td>
+<td>promise</td>
+<td>Resolved when popover is finished removing.</td>
+</tr>
+<tr>
+<th>isShown()</th>
+<td>/</td>
+<td>boolean</td>
+<td>Returns true if popover is shown or false if it isn't.</td>
+</tr>  
+</table>
+
+         
+         
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

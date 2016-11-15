@@ -1,0 +1,95 @@
+<ion-view view-title="Ionic - Forms">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+  <div class="IOimgsize">
+      <hr />
+<p><b>Ionic forms</b> are mostly used for interaction with users and collecting needed info. This tutorial will cover various text input forms and in our next tutorials we will explain how to use other form elements using Ionic framework.</p>
+
+<hr><h4>Using Input Form</h4>
+<p>The best way to use forms is to use <b>list</b> and <b>item</b> as your main classes. Your app will usually consist more then one form element so it make sence to organize it as a list. In the following example you can notice that item element is <b>label</b> tag.</p>
+<p>You can use any other element but label will provide ability to tap on any part of the element to focus your text input. You can set <b>placeholder</b> that will look different then the input text and it will be hidden as soon as you start typing. You can see this in example below.</p>
+
+<pre class="prettyprint notranslate">
+&lt;div class="list"&gt;
+   &lt;label class="item item-input"&gt;
+   &lt;input type="text" placeholder="Placeholder 1"&gt;
+   &lt;/label&gt;
+
+   &lt;label class="item item-input"&gt;
+   &lt;input type="text" placeholder="Placeholder 2"&gt;
+   &lt;/label&gt;
+&lt;/div&gt;
+</pre>
+<hr><h4>Ionic Labels</h4>
+<p>Ionic offers some other options for your label. You can use <b>input-label</b> class if you want your placeholder to be on the left side when you type text</p>
+<pre class="prettyprint notranslate">
+&lt;div class="list"&gt;
+   &lt;label class="item item-input"&gt;
+   &lt;input type="text" placeholder="Placeholder 1"&gt;
+   &lt;/label&gt;
+
+   &lt;label class="item item-input"&gt;
+   &lt;input type="text" placeholder="Placeholder 2"&gt;
+   &lt;/label&gt;
+&lt;/div&gt;
+</pre>
+<hr><h4>Stacked Label</h4>
+<p><b>Stacked label</b> is the other option that allows moving your label on top or the bottom of the input. To achieve this we will add <b>item-stacked-label</b> class to our label element and we need to create new element and assign <b>input-label</b> class to it.</p>
+<p>If we want it to be on top we just need to add this element before <b>input</b> tag. This is shown in our example below. Notice that the <b>span</b> tag is before <b>input</b> tag. If we changed their places it would appear below it on screen.</p>
+
+<pre class="prettyprint notranslate">
+&lt;div class="list"&gt;
+   &lt;label class="item item-input item-stacked-label"&gt;
+   &lt;span class="input-label"&gt;Label 1&lt;/span&gt;
+   &lt;input type="text" placeholder="Placeholder 1"&gt;
+   &lt;/label&gt;
+
+   &lt;label class="item item-input item-stacked-label"&gt;
+   &lt;span class="input-label"&gt;Label 2&lt;/span&gt;
+   &lt;input type="text" placeholder="Placeholder 2"&gt;
+   &lt;/label&gt;
+&lt;/div&gt;
+</pre>
+<hr><h4>Floating Label</h4>
+<p><b>Floating labels</b> are third option we can use. These labels will be hidden before we start typing. As soon the typing starts they will appear on top of the element with nice floating animation. We can use floating labels the same way as we used stacked labels. The only difference is that this time we will use <b>item-floating-label</b> class.  </p>
+
+<pre class="prettyprint notranslate">
+&lt;div class="list"&gt;
+   &lt;label class="item item-input item-floating-label"&gt;
+   &lt;span class="input-label"t&gt;Label 1&lt;/span&gt;
+   &lt;input type="text" placeholder="Placeholder 1"&gt;
+   &lt;/label&gt;
+
+   &lt;label class="item item-input item-floating-label"&gt;
+   &lt;span class="input-label"&gt;Label 2&lt;/span&gt;
+   &lt;input type="text" placeholder="Placeholder 2"&gt;
+   &lt;/label&gt;
+&lt;/div&gt;
+</pre>
+<hr><h4>Inset inputs</h4>
+<p>In our last tutorials we showed how to inset Ionic elements. You can also inset an input by adding <b>item-input-inset</b> class to your item and <b>item-input-wrapper</b> to your label. Wrapper will add aditional styling to your label.</p>
+<p>If you add some other elements next to your label the label size will adjust to accomodate the new element. You can also add elements inside your label (usually icon).</p>
+<p>Example below shows two inset inputs. The first one have button next to the label, and the second one has icon inside. We used <b>placeholder-icon</b> class to make the icon the same color as the placeholder text. Without it the icon would use the color of the label. </p>
+
+<pre class="prettyprint notranslate">
+&lt;div class="list"&gt;
+   &lt;div class="item item-input-inset"&gt;
+      &lt;label class="item item-input-wrapper"&gt;		
+      &lt;input type="text" placeholder="Placeholder 1"&gt;
+      &lt;/label&gt;
+      &lt;button class="button"&gt;button&lt;/button&gt;
+   &lt;/div&gt;
+
+   &lt;div class="item item-input-inset"&gt;
+      &lt;label class="item item-input-wrapper"&gt;
+      &lt;i class="icon ion-edit placeholder-icon"&gt;&lt;/i&gt;
+      &lt;input type="text" placeholder="Placeholder 2"&gt;
+      &lt;/label&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<hr />
+
+      
+      </div>
+  </ion-content>
+</ion-view>

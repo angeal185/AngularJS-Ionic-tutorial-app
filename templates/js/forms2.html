@@ -1,0 +1,60 @@
+<ion-view view-title="Ionic - JS Forms">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p>We already went through Ionic CSS form elements in one of our previous tutorials, and now we will work with Ionic JavaScript forms. In this tutorial we will show you JavaScript checkbox, radio buttons and toggle.</p>
+<hr><h4>Using ion-checkbox</h2>
+<p>Let's see how to use Ionic JavaScript checkbox. First we need to create <b>ion-checkbox</b> element in HTML file. Inside of it we will assign <b>ng-model</b> attribute that will be connected to the angular <b>$scope</b>. You will notice that we are using dot when defining value of model even though it would work without it. This will allow us to keep the link between child and parent scopes at all times. This is very important to avoid some issues that could happen in the future. After we created the element, we will bind its value using angular expressions.</p>
+<pre class="prettyprint notranslate">
+&lt;ion-checkbox ng-model="checkboxModel.value1"&gt;Checkbox 1&lt;/ion-checkbox&gt;
+
+&lt;ion-checkbox ng-model="checkboxModel.value2"&gt;Checkbox 2&lt;/ion-checkbox&gt;
+
+&lt;p&gt;Checkbox 1 value is: &lt;b&gt;{{checkboxModel.value1}}&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;Checkbox 2 value is: &lt;b&gt;{{checkboxModel.value2}}&lt;/b&gt;&lt;/p&gt;
+</pre>
+<p>Next we need to assign values to our model inside controller. The values we will use are <b>false</b> since we want to start with unchecked checkboxes.</p>
+<pre class="prettyprint notranslate">
+$scope.checkboxModel = {
+   value1 : false,
+   value2 : false
+};
+</pre><hr>
+
+<p>Now when we tap checkbox elements it will automatically change their model value to true as showed below.</p>
+<hr><h4>Using ion-radio</h2>
+<p>First we will create three <b>ion-radio</b> elements in our HTML and assign <b>ng-model</b> and <b>ng-value</b> to it. After that, we will display chosen value with angular expression. We will start with all three radio elements unchecked so the value will not be assigned to our screen.</p>
+<pre class="prettyprint notranslate">
+&lt;ion-radio ng-model = "radioModel.value" ng-value = "1"&gt;Radio 1&lt;/ion-radio&gt;
+&lt;ion-radio ng-model = "radioModel.value" ng-value = "2"&gt;Radio 2&lt;/ion-radio&gt;
+&lt;ion-radio ng-model = "radioModel.value" ng-value = "3"&gt;Radio 3&lt;/ion-radio&gt;
+
+&lt;p&gt;Radio value is: &lt;b&gt;{{radioModel.value}}&lt;/b&gt;&lt;/p&gt;
+</pre><hr>
+<p>When we tap second checkbox element the value will change accordingly.</p>
+<hr><h4>Using ion-toggle</h2>
+<p>You will notice that toggle is similar to checkbox. We will follow the same steps as we did with our checkbox. In HTML file first we will create <b>ion-toggle</b> elements, then assign <b>ng-model</b> value and then bind expression values of to our view.</p>
+<pre class="prettyprint notranslate">
+&lt;ion-toggle ng-model = "toggleModel.value1"&gt;Toggle 1&lt;/ion-toggle&gt;
+&lt;ion-toggle ng-model = "toggleModel.value2"&gt;Toggle 2&lt;/ion-toggle&gt;
+&lt;ion-toggle ng-model = "toggleModel.value3"&gt;Toggle 2&lt;/ion-toggle&gt;
+
+&lt;p&gt;Toggle value 1 is: &lt;b&gt;{{toggleModel.value1}}&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;Toggle value 2 is: &lt;b&gt;{{toggleModel.value2}}&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;Toggle value 3 is: &lt;b&gt;{{toggleModel.value3}}&lt;/b&gt;&lt;/p&gt;
+</pre>
+<p>Next we will assign values to <b>$scope.toggleModel</b> in our controller. Since toggle use boolean values we will assign <b>true</b> to first element and <b>false</b> to the other two.
+</p>
+<pre class="prettyprint notranslate">
+$scope.toggleModel = {
+  value1 : true,
+  value2 : false,
+  value3 : false
+};
+</pre><hr>
+<p>Now we will tap on second and third toggle to show you how the values change from false to true.</p>
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

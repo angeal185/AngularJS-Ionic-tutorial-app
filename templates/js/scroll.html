@@ -1,0 +1,285 @@
+<ion-view view-title="Ionic - JS Scroll">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         
+         <p>The element used for scrolling manipulation in ionic apps is <b>ion-scroll</b>.</p>
+<hr><h4>Using Scroll</h4>
+<p>The following code snippets will create scrollable container and adjust scrolling patterns. First we will create our HTML element and add properties to it. We will add &gt; <b>direction = "xy"</b> to allow scrolling to every side, We will also set width and height for the scroll element.</p>
+<hr><h4>HTML Code</h3>
+<pre class="prettyprint notranslate">
+&lt;ion-scroll zooming = "true" direction = "xy" style = "width: 320px; height: 500px"&gt;
+   &lt;div class = "scroll-container"&gt;&lt;/div&gt;
+&lt;/ion-scroll&gt;
+</pre>
+<p>Next we will add image of our world map to <b>div</b> element we created inside <b>ion-scroll</b> and set its width and height.</p>
+<hr><h4>CSS Code</h3>
+<pre class="prettyprint notranslate">
+.scroll-container	{
+   width: 2600px;
+   height: 1000px;
+   background: url('../img/world-map.png') no-repeat
+}
+</pre>
+<p>When we run our app, we can scroll the map in every direction. Example below shows North America part of the map.</p>
+<p>We can scroll this map to any part that we want. Let's scroll it to show Asia.</p>
+<hr>
+<p>There are other attributes that can be applied to <b>ion-scroll</b>. You can check them in the following table.</p>
+<hr><h4>Scroll Attributes</h3>
+<table class="table table-bordered">
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Details</th>     
+</tr>
+<tr>
+<th>direction</th>
+<td>string</td>
+<td>Possible directions of the scroll. Default value is <b>y</b></td>
+</tr>
+<tr>
+<th>delegate-handle</th>
+<td>string</td>
+<td>Used for scroll identification with <b>$ionicScrollDelegate</b>.</td>
+</tr>
+<tr>
+<th>locking</th>
+<td>boolean</td>
+<td>Used to lock scrolling in one direction at a time. Default value is true.</td>
+</tr>
+<tr>
+<th>paging</th>
+<td>boolean</td>
+<td>Used to determine if the paging will be used with scroll.</td>
+</tr>
+<tr>
+<th>on-refresh</th>
+<td>expression</td>
+<td>Called on pull-to-refresh.</td>
+</tr>
+<tr>
+<th>on-scroll</th>
+<td>expression</td>
+<td>Called when scrolling.</td>
+</tr>
+<tr>
+<th>scrollbar-x</th>
+<td>boolean</td>
+<td>Should horizontal scroll bar be shown. Default value is true.</td>
+</tr>
+<tr>
+<th>scrollbar-y</th>
+<td>string</td>
+<td>Should vertical scroll bar be shown. Default value is true.</td>
+</tr>
+<tr>
+<th>zooming</th>
+<td>boolean</td>
+<td>Used to apply pinch-to-zoom.</td>
+</tr>
+<tr>
+<th>min-zoom</th>
+<td>integer</td>
+<td>Minimal zoom value.</td>
+</tr>
+<tr>
+<th>max-zoom</th>
+<td>integer</td>
+<td>Maximal zoom value.</td>
+</tr>
+<tr>
+<th>scrollbar-x</th>
+<td>boolean</td>
+<td>Used to enable bouncing. Default value on IOS is true, on Android false.</td>
+</tr>
+</table>
+<hr><h4>Infinite Scroll</h4>
+<p>Infinite scroll is used to trigger some behavior when scrolling pass the bottom of the page. Following example shows how this works. In our controller we created function for adding items to the list. Items will be added when scroll passes 10% of the last element loaded. This will continue until we hit 30 loaded elements. Every time loading is finished, <b>on-infinite</b> will broadcast <b>scroll.infiniteScrollComplete</b> event.</p>
+<hr><h4>HTML Code</h3>
+<pre class="prettyprint notranslate">
+&lt;ion-list&gt;
+   &lt;ion-item ng-repeat = "item in items" item = "item"&gt;Item {{ item.id }}&lt;/ion-item&gt;
+&lt;/ion-list&gt;
+
+&lt;ion-infinite-scroll ng-if = "!noMoreItemsAvailable" on-infinite = "loadMore()" distance = "10%"&gt;&lt;/ion-infinite-scroll&gt;
+</pre>
+<hr><h4>Controller Code</h3>
+<pre class="prettyprint notranslate">
+.controller('MyCtrl', function($scope) {
+
+   $scope.items = [];
+
+   $scope.noMoreItemsAvailable = false;
+  
+   $scope.loadMore = function() {
+
+      $scope.items.push({ id: $scope.items.length}); 
+
+      if ($scope.items.length == 30) {
+         $scope.noMoreItemsAvailable = true;
+      }
+
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+   };
+    
+})
+</pre>
+<p>There are other attributes that can be used with <b>ion-infinite-scroll</b></p>
+<hr><h4>Scroll Attributes</h3>
+<table class="table table-bordered">
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Details</th>     
+</tr>
+<tr>
+<th>on-infinite</th>
+<td>expression</td>
+<td>What should be called when scrolled to the bottom.</td>
+</tr>
+<tr>
+<th>distance</th>
+<td>string</td>
+<td>The distance from the bottom needed to trigger on-infinite expression.</td>
+</tr>
+<tr>
+<th>spinner</th>
+<td>string</td>
+<td>What spinner should be shown while loading</td>
+</tr>
+<tr>
+<th>immediate-check</th>
+<td>boolean</td>
+<td>Should on-infinite be called when screen is loaded.</td>
+</tr>
+</table>
+<hr><h4>Scroll Delegate</h4>
+<p>Ionic offers delegate for full control of the scroll elements. It can be used by injecting <b>$ionicScrollDelegate</b> service to controller, and then use methods it provides. Example below shows scrollable list of 20 objects.</p>
+<hr><h4>HTML Code</h3>
+<pre class="prettyprint notranslate">
+&lt;div class = "list"&gt;
+   &lt;div class = "item"&gt;Item 1&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 2&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 3&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 4&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 5&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 6&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 7&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 8&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 9&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 10&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 11&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 12&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 13&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 14&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 15&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 16&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 17&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 18&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 19&lt;/div&gt;
+   &lt;div class = "item"&gt;Item 20&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;button class = "button" ng-click = "scrollTop()"&gt;Scroll to Top!&lt;/button&gt;
+</pre>
+<hr><h4>Controller Code</h3>
+<pre class="prettyprint notranslate">
+.controller('DashCtrl', function($scope, $ionicScrollDelegate) {
+
+   $scope.scrollTop = function() {
+      $ionicScrollDelegate.scrollTop();
+   };
+})   
+</pre>
+<hr>
+<p>When we tap the button, the scroll will be moved to the top.</p>
+<hr>
+<p>Now we will go through all of the <b>$ionicScrollDelegate</b> methods.</p>
+<hr><h4>Delegate Methods</h3>
+<table class="table table-bordered"  style="font-size:11px;">
+<tr>
+<th>Method</th>
+<th>parms</th>
+<th>Type</th>
+<th>Details</th>     
+</tr>
+<tr>
+<th>scrollTop(parm)</th>
+<td>shouldAnimate</td>
+<td>boolean</td>
+<td>Should scroll be animated.</td>
+</tr>
+<tr>
+<th>scrollBottom(parm)</th>
+<td>shouldAnimate</td>
+<td>boolean</td>
+<td>Should scroll be animated.</td>
+</tr>
+<tr>
+<th>scrollTo(parm1, parm2, parm3)</th>
+<td>left, top, shouldAnimate</td>
+<td>number, number, integer</td>
+<td>First two parms determine value of the x, and y axis offset.</td>
+</tr>
+<tr>
+<th>scrollBy(parm1, parm2, parm3)</th>
+<td>left, top, shouldAnimate</td>
+<td>number, number, integer</td>
+<td>First two parms determine value of the x, and y axis offset.</td>
+</tr>
+<tr>
+<th>zoomTo(parm1, parm2, parm3, parm4)</th>
+<td>level, animate, originLeft, originTop</td>
+<td>number, boolean, number, number</td>
+<td><b>level</b> is used to determine level to zoom to. <b>originLeft</b> and <b>originRight</b> coordinates where the zooming should happen.</td>
+</tr>
+<tr>
+<th>zoomBy(parm1, parm2, parm3, parm4)</th>
+<td>factor, animate, originLeft, originTop</td>
+<td>number, boolean, number, number</td>
+<td><b>factor</b> is used to determine factor to zoom by. <b>originLeft</b> and <b>originRight</b> coordinates where the zooming should happen.</td>
+</tr>
+<tr>
+<th>getScrollPosition()</th>
+<td>/</td>
+<td>/</td>
+<td>Returns object with two number as properties: <b>left</b> and <b>right</b>. These numbers represent the distance the user has scrolled from the left and from the top respectively.</td>
+</tr>
+<tr>
+<th>anchorScroll(parm1)</th>
+<td>shouldAnimate</td>
+<td>boolean</td>
+<td>It will scroll to the element with the same id as the <b>window.loaction.hash</b>. If this element doesn't exist, it will scroll to the top.</td>
+</tr>
+<tr>
+<th>freezeScroll(parm1)</th>
+<td>shouldFreeze</td>
+<td>boolean</td>
+<td>Used to disable scrolling for particular scroll.</td>
+</tr>
+<tr>
+<th>freezeAllScrolls(parm1)</th>
+<td>should Freeze</td>
+<td>boolean</td>
+<td>Used to disable scrolling for all the scrolls in the app.</b></td>
+</tr>
+<tr>
+<th>getScrollViews()</th>
+<td>/</td>
+<td>object</td>
+<td>Returns the scrollView object.</b></td>
+</tr>
+<tr>
+<th>$getByHandle(parm1)</th>
+<td>handle</td>
+<td>string</td>
+<td><p>Used to connect methods to the particular scroll view with the same handle.</p>
+<b>$ionicScrollDelegate.
+$getByHandle('my-handle').scrollTop();</b></td>
+</tr>
+</table>
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

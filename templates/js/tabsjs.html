@@ -1,0 +1,119 @@
+<ion-view view-title="Ionic - JS Tabs">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         
+         <p>Tabs are useful pattern for any navigation type or selecting different pages inside your app. The same tabs will appear at the top of the screen for Android devices and at the bottom for IOS devices.</p>
+         <hr>
+<h4>Using Tabs</h4>
+<p>Tabs can be added to app using <b>ion-tabs</b> as a container element and <b>ion-tab</b> as a content element. We will add it to <b>index.html</b> but you can add it to any HTML file inside your app. Just be sure not to add it inside <b>ion-content</b> to avoid CSS issues that comes with it.</p>
+<hr><h4>index.html Code</h4>
+<pre class="prettyprint notranslate">
+&lt;ion-tabs class = "tabs-icon-only"&gt;
+
+   &lt;ion-tab title = "Home" icon-on = "ion-ios-filing" 
+      icon-off = "ion-ios-filing-outline"&gt;&lt;/ion-tab&gt;
+
+   &lt;ion-tab title = "About" icon-on = "ion-ios-home" 
+      icon-off = "ion-ios-home-outline"&gt;&lt;/ion-tab&gt;
+
+   &lt;ion-tab title = "Settings" icon-on = "ion-ios-star" 
+      icon-off = "ion-ios-star-outline"&gt;&lt;/ion-tab&gt;
+
+&lt;/ion-tabs&gt;
+</pre>
+<p>There is API available for <b>ion-tab</b> elements. You can add it as attributes as showed in example above where we used <b>title</b>, <b>icon-on</b> and <b>icon-off</b>. The last two are used to differentiate selected tab from the rest of it. If you look at the image above, you can see that first tab is selected. You can check the rest of the attributes in the following table.</p>
+<hr><h4>Tab Attributes</h4>
+<table class="table table-bordered">
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Details</th>     
+</tr>
+<tr>
+<th>title</th>
+<td>string</td>
+<td>The title of the tab.</td>
+</tr>
+<tr>
+<th>href</th>
+<td>string</td>
+<td>The link used for tab navigation.</td>
+</tr>
+<tr>
+<th>icon</th>
+<td>string</td>
+<td>The icon of the tab.</td>
+</tr>
+<tr>
+<th>icon-on</th>
+<td>string</td>
+<td>The icon of the tab when selected.</td>
+</tr>
+<tr>
+<th>icon-off</th>
+<td>string</td>
+<td>The icon of the tab when not selected.</td>
+</tr>
+<tr>
+<th>badge</th>
+<td>expression</td>
+<td>The badge for the tab.</td>
+</tr>
+<tr>
+<th>badge-style</th>
+<td>expression</td>
+<td>The badge style for the tab.</td>
+</tr>
+<tr>
+<th>on-select</th>
+<td>expression</td>
+<td>Called when tab is selected</td>
+</tr>
+<tr>
+<th>on-deselect</th>
+<td>expression</td>
+<td>Called when tab is deselected</td>
+</tr>
+<tr>
+<th>hidden</th>
+<td>expression</td>
+<td>Used to hide the tab.</td>
+</tr>
+<tr>
+<th>disabled</th>
+<td>expression</td>
+<td>Used to disable the tab.</td>
+</tr>
+</table>
+<p>Tabs also have its own delegate service for easier control of all the tabs inside the app. It can be injected to controller and contains several methods that are shown in the table below.</p>
+<hr><h4>Delegate Methods</h4>
+<table class="table table-bordered" style="font-size:11px;">
+<tr>
+<th>Method</th>
+<th>Parameters</th>
+<th>Type</th>
+<th>Details</th>     
+</tr>
+<tr>
+<th>selected Index()</th>
+<td>/</td>
+<td>number</td>
+<td>Returns the index of the selected tab.</td>
+</tr>
+<tr>
+<th>$getBy Handle (parm1)</th>
+<td>handle</td>
+<td>string</td>
+<td><p>Used to connect methods to the particular tab view with the same handle. Handle can be added to <b>ion-tabs</b> by using 
+<b>delegate-handle = "my-handle"</b> attribute.</p>
+<b>$ionicTabsDelegate.$getByHandle('my-handle').selectedIndex();</b></td>
+</tr>
+</table>
+
+         
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,79 @@
+<ion-view view-title="Ionic - JS Loading">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p>Ionic loading will disable any interaction with users when showed and enable it again when it is needed.</p>
+<hr><h4>Using Loading</h2>
+<p>Loading is triggered inside controller. First we need to inject <b>$ionicLoading</b> in our controller as dependency. After that we need to call <b>$ionicLoading.show()</b> method and loading will appear. For disabling it there is <b>$ionicLoading.hide()</b> method.</p>
+<h3>Controller</h3>
+<pre class="prettyprint notranslate">
+.controller('myCtrl', function($scope, $ionicLoading) {
+
+   $scope.showLoading = function() {
+      $ionicLoading.show({
+         template: 'Loading...'
+      });
+   };
+
+   $scope.hideLoading = function(){
+      $ionicLoading.hide();
+   };
+});
+</pre>
+<h3>HTML Code</h3>
+<pre class="prettyprint notranslate">
+&lt;button class = "button button-block" ng-click = "showLoading()"&gt;&lt;/button&gt;
+</pre>
+<p>When user taps the button, the loading will appear. You will usually want to hide the loading after some time consuming functionalities are finished.</p>
+<p>There are some other option parameters that can be used when working with loading. The explanation is shown in the table below.</p>
+<h3>Loading option parameters</h3>
+<table class="table table-bordered">
+<tr>
+<th>Options</th>
+<th>Type </th>
+<th>Details</th>        
+</tr>
+<tr>
+<th>templateUrl</th>
+<td>string</td>
+<td>Used to load HTML template as loading indicator.</td>
+</tr>
+<tr>
+<th>scope</th>
+<td>object</td>
+<td>Used to pass custom scope to loading. Default is the $rootScope.</td>
+</tr>
+<tr>
+<th>noBackdrop</th>
+<td>boolean</td>
+<td>Used to hide the backdrop.</td>
+</tr>
+<tr>
+<th>hideOnStateChange</th>
+<td>boolean</td>
+<td>Used to hide the loading when state is changed.</td>
+</tr>
+<tr>
+<th>delay</th>
+<td>number</td>
+<td>Used to delay showing the indicator in milliseconds.</td>
+</tr>
+<tr>
+<th>duration</th>
+<td>number</td>
+<td>Used to hide the indicator after some time in milliseconds. Can be used instead of <b>hide()</b> method.</td>
+</tr>
+</table>
+<hr><h4>Loading Config</h2>
+<p>Ionic config is used to configure options you want to be used in all of the <b>$ionicLoading</b> services throughout the app. This can be done by using <b>$ionicLoadingConfig</b>. Since constants should be added to main app module, open your <b>app.js</b> file and add your constant after module declaration.</p>
+<pre class="prettyprint notranslate">
+.constant('$ionicLoadingConfig', {
+   template: 'Default Loading Template...'
+})
+</pre>
+         <hr>
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

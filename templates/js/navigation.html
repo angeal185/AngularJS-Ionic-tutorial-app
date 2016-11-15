@@ -1,0 +1,249 @@
+<ion-view view-title="Ionic - JS Navigation">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         
+         <p>Navigation is one of the core components of every app. Ionic is using AngularJS UI Router for handling navigation.</p>
+<hr><h4>Using Navigation</h4>
+<p>Navigation can be configured in <b>app.js</b> file. If you are using one of the Ionic templates you will notice <b>$stateProvider</b> service injected into app <b>config</b>. The most simple way of creating states for the app is showed in the example below. <b>$stateProvider</b> service will scan the url, find the corresponding state and load the file we defined in <b>app.config</b>.</p>
+<hr><h4>app.js Code</h4>
+<pre class="prettyprint notranslate">
+.config(function($stateProvider) {
+   $stateProvider
+   .state('index', { url: '/', templateUrl: 'templates/home.html'})
+   .state('state1', {url: '/state1', templateUrl: 'templates/state1.html'})
+   .state('state2', {url: '/state2', templateUrl: 'templates/state2.html',});
+});
+</pre>
+<p>The state will be loaded into the <b>ion-nav-view</b> element that can should be placed in <b>index.html</b> body.</p>
+<hr><h4>index.html Code</h4>
+<pre class="prettyprint notranslate">
+&lt;ion-nav-view&gt;&lt;/ion-nav-view&gt;
+</pre>
+<p>When we created states in the example above we were using <b>templateUrl</b> so when state is loaded it will search for matching template file. Now we will open <b>templates</b> folder and create new file <b>state1.html</b> that will be loaded when app url is changed to <b>/state1</b>.</p>
+<p>state1.html Code</p>
+<pre class="prettyprint notranslate">
+&lt;ion-view&gt;
+   &lt;ion-content&gt;
+      This is State 1 !!!
+   &lt;/ion-content&gt;
+&lt;/ion-view&gt;
+</pre>
+<hr><h4>Creating Navigation Menu</h4>
+<p>You can add navigation bar to your app in <b>index.html</b> body by adding <b>ion-nav-bar</b> element. Inside navigation bar we will add <b>ion-nav-back-button</b> with icon. This will be used for returning to previous state. The button will appear automatically when state is changed. We will assign <b>goBack()</b> function that will use <b>$ionicHistory</b> service for handling this functionality. So when user leave home state and go to state1, the back button will appear that can be taped if user want to return to home state again.</p>
+<hr><h4>index.html Code</h4>
+<pre class="prettyprint notranslate">
+&lt;ion-nav-bar class = "bar-positive"&gt;
+   &lt;ion-nav-back-button class = "button-clear" ng-click = "goBack()"&gt;
+      &lt;i class = "icon ion-arrow-left-c"&gt;&lt;/i&gt; Back
+   &lt;/ion-nav-back-button&gt;
+&lt;/ion-nav-bar&gt;
+</pre>
+<hr><h4>Controller Code</h4>
+<pre class="prettyprint notranslate">
+.MyCtrl($scope, $ionicHistory) {
+   $scope.goBack = function() {
+      $ionicHistory.goBack();
+   };
+}  
+</pre>
+<hr><h4>Adding Navigation Elements</h4>
+<p>Buttons can be added to navigation bar using <b>ion-nav-buttos</b>. This element should be placed inside <b>ion-nav-bar</b> or <b>ion-view</b>. We can assign <b>side</b> attribute with four option values. <b>primary</b> and <b>secondary</b> values will place buttons according to platform that is used. Sometimes you want buttons on one side no matter if it's IOS or Android. If that is the case you can use <b>left</b> or <b>right</b> attributes instead.</p>
+<p>We can also add <b>ion-nav-title</b> to navigation bar. All of the code will be placed in <b>index.html</b> body so it can be used everywhere.</p>
+<pre class="prettyprint notranslate">
+&lt;ion-nav-bar class = "bar-positive"&gt;
+   &lt;ion-nav-title&gt;
+      Title
+   &lt;/ion-nav-title&gt;
+	
+   &lt;ion-nav-buttons side = "primary"&gt;
+      &lt;button class = "button"&gt;
+         Button 1
+      &lt;/button&gt;
+   &lt;/ion-nav-buttons&gt;
+&lt;/ion-nav-bar&gt;
+</pre>
+<hr><h4>Other Navigation Attributes</h4>
+<p>Following table shows other functionalities that can be used with Ionic navigation.</p>
+<hr><h4>Navigation Attributes</h4>
+<table class="table table-bordered">
+<tr>
+<th>Attribute</th>
+<th>Options</th>
+<th>Detail</th>       
+</tr>
+<tr>
+<th>nav-transition</th>
+<td>none, ios, android</td>
+<td>Used to set animation that should be applied when transition occurs.</td>
+</tr>
+<tr>
+<th>nav-direction</th>
+<td>forward, back, enter, exit, swap</td>
+<td>Used to set the direction of the animation when transition occurs.</td>
+</tr>
+<tr>
+<th>hardwareBackButtonClose </th>
+<td>boolean</td>
+<td>It will enable closing the modal when hardware back button is clicked. Default value is true.</td>
+</tr>     
+</table>
+<hr><h4>Caching</h4>
+<p>Ionic is caching up to ten views to improve performance. It also offers a way to handle caching manually. Since only backward views are cached and forward ones are loading each time users visit them we can easily set to cache forward views by using following code.</p>
+<pre class="result notranslate">
+$ionicCinfigProvider.views.forwardCache(true);
+</pre>
+<p>We can also set how many states should be cached. If we want three views to be cached, we can use the following.</p>
+<pre class="result notranslate">
+$ionicConfigProvider.views.maxCache(3);
+</pre>
+<p>Caching can be disabled inside <b>$stateProvider</b> or by setting attribute to <b>ion-view</b>. Both examples are below.</p>
+<pre class="prettyprint notranslate">
+$stateProvider.state('state1', {
+   cache: false,
+   url : '/state1',
+   templateUrl: 'templates/state1.html'
+})
+</pre>
+<pre class="prettyprint notranslate">
+&lt;ion-view cache-view = "false"&gt;&lt;/ion-view&gt;
+</pre>
+<hr><h4>Delegate for Controlling Navigation Bar</h4>
+<p>We can control behavior of the navigation bar using <b>$ionicNavBarDelegate</b> service. This service needs to be injected to our controller.</p>
+<hr><h4>HTML Code</h4>
+<pre class="prettyprint notranslate">
+&lt;ion-nav-bar&gt;
+   &lt;button ng-click = "setNavTitle('title')"&gt;
+      Set title to banana!
+   &lt;/button&gt;
+&lt;/ion-nav-bar&gt;
+</pre>
+<hr><h4>Controller Code</h4>
+<pre class="prettyprint notranslate">
+$scope.setNavTitle = function(title) {
+   $ionicNavBarDelegate.title(title);
+}
+</pre>
+<p>The <b>$ionicNavBarDelegate</b> service has other useful methods.</p>
+<hr><h4>Methods for $ionicNavBarDelegate</h4>
+<table class="table table-bordered">
+<tr>
+<th>Method</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Detail</th>       
+</tr>
+<tr>
+<th>align(parameter)</th>
+<th>center, left, right</th>
+<td>str</td>
+<td>Used to align the title.</td>
+</tr>
+<tr>
+<th>showBackButton()</th>
+<td>show</td>
+<td>boolean</td>
+<td>Used to show or hide the back button.</td>
+</tr>
+<tr>
+<th>title(parameter) </th>
+<td>title</td>
+<td>str</td>
+<td>Used to show the new title.</td>
+</tr>     
+</table>
+<hr><h4>History</h4>
+<p>You can track history of the previous, current and the forward views by using <b>$ionicHistory</b> service. Following table shows all of the methods of this service.</p>
+<hr><h4>Methods for $ionicHistory</h4>
+<table class="table table-bordered">
+<tr>
+<th>Method</th>
+<th>Parm.</th>
+<th>Type</th>
+<th>Detail</th>       
+</tr>
+<tr>
+<th>viewHistory</th>
+<td>/</td>
+<td>obj</td>
+<td>Returns the app view history data.</td>
+</tr>
+<tr>
+<th>currentView()</th>
+<td>/</td>
+<td>obj</td>
+<td>Returns the current view.</td>
+</tr>
+<tr>
+<th>title(parameter)</th>
+<td>title</td>
+<td>str</td>
+<td>Returns the ID of the view which is parent of the current view.</td>
+</tr>
+<tr>
+<th>currentTitle</th>
+<td>val</td>
+<td>str</td>
+<td>Returns the title of the current view. It can be updated by setting new <b>val</b> value.</td>
+</tr>
+<tr>
+<th>backView()</th>
+<td>/</td>
+<td>str</td>
+<td>Returns the last back view.</td>
+</tr>
+<tr>
+<th>backTitle()</th>
+<td>/</td>
+<td>str</td>
+<td>Returns the title of last back view.</td>
+</tr>
+<tr>
+<th>forwardView()</th>
+<td>/</td>
+<td>obj</td>
+<td>Returns the last forward view.</td>
+</tr>
+<tr>
+<th>currentStateName()</th>
+<td>/</td>
+<td>str</td>
+<td>Returns the current state name.</td>
+</tr>
+<tr>
+<th>goBack()</th>
+<td>bc.</td>
+<td>num</td>
+<td>Used to set how many views to go back. Number should be negative. If it is positive or zero it will have no effect..</td>
+</tr>
+<tr>
+<th>clearHistory()</th>
+<td>/</td>
+<td>/</td>
+<td>Used to clear entire view history.</td>
+</tr>
+<tr>
+<th>clearCache()</th>
+<td>/</td>
+<td>pms.</td>
+<td>Used to clear all cached views.</td>
+</tr>
+<tr>
+<th>nextViewOptions()</th>
+<td>/</td>
+<td>obj</td>
+<td>Sets the options of the next view. You can look the following example for more info.</td>
+</tr>
+</table>
+<p>The <b>nextViewOptions()</b> method has three options available. <b>disableAnimate</b> is used for disabling animation of the next view change. <b>disableBack</b> will set the back view to null. <b>historyRoot</b> will set the next view as the root view.</p>
+<pre class="prettyprint notranslate">
+$ionicHistory.nextViewOptions({
+   disableAnimate: true,
+   disableBack: true
+});
+</pre>
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

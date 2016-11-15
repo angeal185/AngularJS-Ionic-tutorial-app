@@ -1,0 +1,71 @@
+<ion-view view-title="Ionic - Header">
+  <ion-content  overflow-scroll="true" padding="true" class="has-header"><div class="IOimgsize">
+      <hr />
+    <p><b>Ionic header bar</b> is located on top of the screen. It can contain title, icons, buttons or some other elements on top of it. There are predefined classes of headers that you can use. You can check all of it in this tutorial.</p>
+
+<h4>Adding Header</h4>
+<p>The main class for all the bars you might use in your app is <b>bar</b>. This class will always be applied to all the bars in your app. All  bar subclasses will use prefix <code>bar</code>.</p>
+<p>If you want to create header you need to add <b>bar-header</b> after your main <b>bar</b> class. Open your <b>www/index.html</b> file and add header class inside your <b>body</b> tag. We are adding header to <b>index.html</b> <b>body</b> because we want it to be available on every screen in the app.</p>
+<p>Since <b>bar-header</b> class has default (white) styling applied we will add title on top of it so you can differentiate it from the rest of your screen.</p>
+<pre class="prettyprint notranslate">
+&lt;div class="bar bar-header"&gt;
+   &lt;h1 class="title"&gt;Header&lt;/h1&gt;
+&lt;/div&gt;
+</pre>
+<hr />
+<h4>Header Colors</h4>
+<p>If you want to style your header you just need to add appropriate color class to it. When you style your elements you need to add your main element class as prefix to your color class. Since we are styling header bar, the prefix class will be <b>bar</b> and color class that we want to use in this example is <b>positive</b> (blue).</p>
+
+<pre class="prettyprint notranslate">
+&lt;div class="bar bar-header bar-positive"&gt;
+   &lt;h1 class="title"&gt;Header&lt;/h1&gt;
+&lt;/div&gt;
+</pre>
+<p>You can use either of the following nine classes to give a color of your choice to your app header:</p>
+<table class="src">
+<tr><th>Color Class</th><th>Description</th><th>Result</th></tr>
+<tr><th>bar-light</th><td>To be used for white color</td><td style="background:#ffffff">&nbsp;</td></tr>
+<tr><th>bar-stable</th><td>To be used for light grey color</td><td style="background:#eeee">&nbsp;</td></tr>
+<tr><th>bar-positive</th> <td>To be used for blue color</td><td style="background:#387ef5">&nbsp;</td></tr>
+<tr><th>bar-calm</th><td>To be used for light blue color</td><td style="background:#11c1f3">&nbsp;</td></tr>
+<tr><th>bar-balanced</th> <td>To be used for green color</td><td style="background:#33cd5f">&nbsp;</td></tr>
+<tr><th>bar-energized</th><td>To be used for yellow color</td><td style="background:#ffc900">&nbsp;</td></tr>
+<tr><th>bar-assertive</th><td>To be used for red color</td><td style="background:#ef473a">&nbsp;</td></tr>
+<tr><th>bar-royal</th><td>To be used for violet color</td><td style="background:#886aea">&nbsp;</td></tr>
+<tr><th>bar-dark</th><td>To be used for black color</td><td style="background:#444444">&nbsp;</td></tr>
+</table>
+<hr />
+<h4>Header Elements</h4>
+<p>We can add other elements inside the header. Following is an example to add <b>menu</b> button and <b>home</b> button inside a header. We will also  add icons on top of our header buttons.</p>
+<pre class="prettyprint notranslate">
+&lt;div class="bar bar-header bar-positive"&gt;
+   &lt;button class="button icon ion-navicon"&gt;&lt;/button&gt;
+      &lt;h1 class="title"&gt;Header Buttons&lt;/h1&gt;
+   &lt;button class="button icon ion-home"&gt;&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+<hr />
+<h4>Sub Header</h4>
+<p>You can create a sub header which will be located just below the header bar. Following example is showing how to add header and sub header to your app. Here we have styled Sub header is with "assertive" (red) color class.</p>
+<pre class="prettyprint notranslate">
+&lt;div class="bar bar-header bar-positive"&gt;
+   &lt;button class="button icon ion-navicon"&gt;&lt;/button&gt;
+      &lt;h1 class="title"&gt;Header Buttons&lt;/h1&gt;
+   &lt;button class="button icon ion-home"&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="bar bar-subheader bar-assertive"&gt;
+   &lt;h4 class="title"&gt;Sub Header&lt;/h4&gt;
+&lt;/div&gt;
+</pre>
+<p>When your route is changed to any of the app screens you will notice that header and sub header are covering some of the content.</p>
+<p>To fix this you need to add <b>has-header</b> or <b>has-subheader</b> class to the <b>ion-content</b> tags of your screens. Open one of your HTML files from <b>www/templates</b> and add <b>has-subheader</b> class to <b>ion-content</b>. If you only use header in your app you will need to add <b>has-header</b> class instead.</p>
+<pre class="prettyprint notranslate">
+&lt;ion-content class="padding has-subheader"&gt;
+</pre>
+<hr />
+</div>
+     <hr /> 
+      <br><br>
+  </ion-content>
+</ion-view>

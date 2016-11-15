@@ -1,0 +1,107 @@
+<ion-view view-title="Ionic - Environment Setup">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <div class="home_content">
+            <h4>Preparations</h4> Before we start this tutorial, make sure you have everything installed/configured to handle Android development (Apache Ant, Java SDK and Eclipse/Android Studio). Download the listed software:
+            <ul>
+                <li><strong>1. Install Apache Ant</strong></li>
+                <li><strong>2. Install nodeJS</strong></li>
+                <li><strong>3. Install Ionic &#038;&#038; Cordova</strong></li>
+                <li><strong>4. Install Java JDK</strong></li>
+                <li><strong>5. Install Android SDK</strong></li>
+                <li><strong>6. Create, Test, and Delete a demo Ionic application</strong></li>
+                <li><strong>7. Let&#8217;s create our own application</strong></li>
+            </ul>
+            <div style="width:100%;height: 20px;"> </div>
+        </div>
+        <div class="home_content">
+            <h4>1. Install Apache Ant</h4>
+            <div style="width:100%;height: 20px;"> </div> Go to the official Apache Ant site and download latest version, or any other if you don’t like to use newer versions. Download link:
+            <div style="width:100%;height: 20px;"> </div> <span><a href="http://ant.apache.org/bindownload.cgi" class="btn-primary2 add-shadow" target="_blank" rel="">
+<span class="icon-speccc icon ion-link"></span><span class="btn-primary-text-container">Download Link : http://ant.apache.org/bindownload.cgi</span> </a>
+            </span>
+            <div style="width:100%;height: 20px;"> </div> Create a new ANT directory (where ever you prefer) and unpack a downloaded archive. It should look something like this: <strong>D:\JavaScript\ANT\apache-ant-1.9.2</strong>
+            <div style="width:100%;height: 20px;"> </div> Use this location and create a new environment variable called <strong>ANT_HOME</strong>, also use this variable and add it to your environment PATH like this: <strong>%ANT_HOME%\bin</strong>.
+            <div style="width:100%;height: 20px;"> </div>
+        </div>
+        <div class="home_content">
+            <h4>2. Install nodeJS</h4>
+            <div style="width:100%;height: 20px;"> </div> Before we can start with Ionic, make sure you have <strong><a href="http://nodejs.org/download/">Node.js</a></strong> installed. Depending on your Windows platform (32 bit or 64 bit) select <strong>Windows Installer (.msi)</strong> and download it. During the installation you must remember instalation location. In this case it&#8217;s:
+            <div style="width:100%;height: 20px;"> </div> <pre class="brush: plain; gutter: false; highlight: [1]; title: ; notranslate" title="">
+c:\Program Files\nodejs\
+</pre>
+            <div style="width:100%;height: 20px;"> </div> <span><a href="http://nodejs.org/download/" class="btn-primary2 add-shadow" target="_blank" rel="">
+<span class="icon-speccc icon ion-link"></span><span class="btn-primary-text-container">Download Link : http://nodejs.org/download/</span> </a>
+            </span>
+            <div style="width:100%;height: 20px;"> </div> It should look like this:
+            <div style="width:100%;height: 20px;"> </div>
+            <div style="width:100%;height: 20px;"> </div> Now go to the <strong>node.js</strong> installation folder (one I mentioned before) and go even deeper until you reach a bin folder:
+            <div style="width:100%;height: 20px;"> </div> <pre class="brush: plain; gutter: false; highlight: [1]; title: ; notranslate" title="">
+C:\Program Files\nodejs\node_modules\npm\bin\
+</pre>
+            <div style="width:100%;height: 20px;"> </div> Copy this location and add it to your environment PATH. Take a look at this <a href="http://www.computerhope.com/issues/ch000549.htm" blank="_blank"><strong>tutorial</strong></a> if you don&#8217;t know how to do that, you will find an examples for Windows XP, Windows 2000 and Windows 7. It should look like this:
+            <div style="width:100%;height: 20px;"> </div>
+        </div>
+        <div class="home_content">
+            <h4>3. Install Ionic &#038;&#038; Cordova</h4>
+            <div style="width:100%;height: 20px;"> </div> First part is optional. Before we install Ionic and Cordova using node.js we could change a default installation folder. Original default folder is strangely placed in this hidden location: <strong>C:\Users{username}\AppData\Roaming\npm</strong>. We can change this destination folder manually, just go to this folder: <strong>C:\Users\{username}\</strong> and create an empty file called: <strong>.npmrc</strong> (make sure you have administration privilegies over that folder). Edit it and add this line (don&#8217;t forget to save):
+            <div style="width:100%;height: 20px;"> </div> <pre class="brush: plain; gutter: false; highlight: [1]; title: ; notranslate" title="">
+prefix = &quot;C:\\{your location}&quot;
+</pre>
+            <div style="width:100%;height: 20px;"> </div> Remember you should use double <strong>\\</strong> instead of a <strong>\</strong>. In this article we are using this location: <strong>prefix = &#8220;D:\\JavaScript\\nodejs&#8221;</strong>
+            <div style="width:100%;height: 20px;"> </div> This is the end of the optional part. Now let&#8217;s install Ionic and Cordova. Open Windows command prompt and enter this:
+            <div style="width:100%;height: 20px;"> </div> <pre class="brush: bash; gutter: false; highlight: [1]; title: ; notranslate" title="">
+npm install -g cordova ionic
+</pre>
+            <div style="width:100%;height: 20px;"> </div> I am adding text instead of an image to prevent unnecessary article loading time. Close this command prompt window, we will update our environment PATH soon.
+            <div style="width:100%;height: 20px;"> </div> Before we proceed any further we need to add Cordova bin directory to our environment PATH. Go to your node.js module directory (one we previously created, in this case it is: <strong>D:\JavaScript\nodejs\</strong>). Go even deeper until you reach this directory:
+            <div style="width:100%;height: 20px;"> </div> <pre class="brush: plain; gutter: false; highlight: [1]; title: ; notranslate" title="">
+D:\JavaScript\nodejs\node_modules\cordova\bin\
+</pre>
+            <div style="width:100%;height: 20px;"> </div> or in your case:
+            <div style="width:100%;height: 20px;"> </div> <pre class="brush: plain; gutter: false; highlight: [1]; title: ; notranslate" title="">
+C:\{your location}\node_modules\cordova\bin\
+</pre>
+            <div style="width:100%;height: 20px;"> </div> Copy that location and add it to your environment PATH like, like this:
+            <div style="width:100%;height: 20px;"> </div>
+            <div style="width:100%;height: 20px;"> </div> Do the same thing for <strong>{your location}</strong> directory, go to your node.js module directory (one we previously created, in this case it is: <strong>D:\JavaScript\nodejs\</strong>).:
+            <div style="width:100%;height: 20px;"> </div> <pre class="brush: plain; gutter: false; highlight: [1]; title: ; notranslate" title="">
+D:\JavaScript\nodejs\
+</pre>
+            <div style="width:100%;height: 20px;"> </div> or in your case:
+            <div style="width:100%;height: 20px;"> </div> <pre class="brush: plain; gutter: false; highlight: [1]; title: ; notranslate" title="">
+C:\{your location}\
+</pre>
+            <div style="width:100%;height: 20px;"> </div> Copy that location and add it to your environment PATH like, like this:
+            <div style="width:100%;height: 20px;"> </div>
+        </div>
+        <!---------------------------------------------------------------------------------      -->
+        <div class="home_content">
+            <h4>4. Install Java JDK</h4>
+            <div style="width:100%;height: 20px;"> </div> Go to the official Oracle Java site and download latest Java JDK version, be careful not to download Java JRE instead. You will also need to create an official Oracle account. Be careful to install a correct 32bit or 64 bit version (this <a href="http://windows.microsoft.com/en-us/windows7/find-out-32-or-64-bit" blank="_blank"><strong>tutorial</strong></a> will show you how to find this information). Download link: http://windows.microsoft.com/en-us/windows7/find-out-32-or-64-bit
+            <div style="width:100%;height: 20px;"> </div> <span><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" class="btn-primary2 add-shadow" target="_blank" rel="">
+<span class="icon-speccc icon ion-link"></span><span class="btn-primary-text-container">Java JDK : http://www.oracle.com/technetwork/java/javase/downloads/index.html</span> </a>
+            </span>
+            <div style="width:100%;height: 20px;"> </div> Install it where ever you want, just remember its location. For example, it should look like this: <strong>C:\Program Files\Java\jdk1.8.0_25\</strong>
+            <div style="width:100%;height: 20px;"> </div> Create a new environment variable (into System variables) called <strong>JAVA_HOME</strong> and add a location to your JAVA installation folder. Then add it to the environment PATH, looking like this: <strong>C:\Program Files\Java\jdk1.8.0_25\bin</strong>: </div>
+        <div class="home_content">
+            <h4>5. Install Android SDK</h4>
+            <div style="width:100%;height: 20px;"> </div> Go to the official Android SDK site:
+            <div style="width:100%;height: 20px;"> </div> <span><a href="http://developer.android.com/sdk/index.html" class="btn-primary2 add-shadow" target="_blank" rel="">
+<span class="icon-speccc icon ion-link"></span><span class="btn-primary-text-container">Android SDK : http://developer.android.com/sdk/index.html</span> </a>
+            </span>
+            <div style="width:100%;height: 20px;"> </div> You can choose <em>&#8220;Download Android Studio&#8221;</em> if you wish a full package or you can scroll a bit until you see: <strong>Other Download Options</strong> -> <strong>SDK Tools Only</strong>. Here you can download SDK only, just select Windows installer package and initiate download/installation. In this case will we download full <strong>Android Studio</strong>. Start SDK Android Studio installation.
+            <div style="width:100%;height: 20px;"> </div> At this point, just click <strong>Next</strong> until installation ends if you wish you can change installation folder.
+            <div style="width:100%;height: 20px;"> </div> Go to Android Studio installation folder, like this one: <strong>C:\Program Files\Android\Android Studio\bin\</strong> and create a desktop shortcut (if you are using 32bit Windows use studio.exe or studio64.exe in case of 64bit Windows). Do this step only if installation didn&#8217;t do that automatically.
+            <div style="width:100%;height: 20px;"> </div> Open Android Studio (this part will fail if you don&#8217;t have installed JAVA SDK also it will take some time for it to open for the first time, ). Click <strong>Create New Project</strong>, and click Next several times. When Android Studio opens, go to toolbar and click Tools -> Android -> SDK Manager. When you open the SDK Manager for the first time, several packages are selected by default. Leave these selected, but be sure you have everything you need to get started by following these steps (don&#8217;t select Android 3.X or anything lower than 2.3.3 because Cordova don&#8217;t support them). Once you&#8217;ve selected all the desired packages, continue to install, click Install X packages. In the next window, double-click each package name on the left to accept the license agreement for each. Click Install. The download progress is shown at the bottom of the SDK Manager window. Do not exit the SDK Manager or it will cancel the download. You will probably need to do this 3-4x times (some sections have dependencies and installer is not smart enough to install then in the right order). This will take a lot of time so make yourself a coffee while you wait. <strong>C:\Users\Gajotres\AppData\Local\Android\sdk</strong> in your case, it will be: <strong>C:\Users\{USER}\AppData\Local\Android\sdk</strong> Create new environment variable called <strong>ANDROID_HOME</strong> and add previously mentioned link. Now add two additional environment PATH locations <strong>%ANDROID_HOME%\platform-tools;</strong> and <strong>%ANDROID_HOME%\tools;</strong>. </div>
+        <div class="home_content">
+            <h4>6. Create, Test, and Delete a demo Ionic application</h4>
+            <div style="width:100%;height: 20px;"> </div> Select any folder you wish to store your project(s) in, we will use it for our Ionic project(s). Open new command prompt window, go to this newly created folder and execute this:
+            <div style="width:100%;height: 20px;"> </div> <pre class="brush: bash; gutter: false; highlight: [1]; title: ; notranslate" title="">
+ionic start myDemoApp tabs
+</pre>
+            <div style="width:100%;height: 20px;"> </div> <pre> Your Ionic project is ready to go! Some quick tips:</pre> <pre> * cd into your project: $ cd myDemoApp</pre> <pre> * Setup this project to use Sass: ionic setup sass</pre> <pre> * Develop in the browser with live reload: ionic serve</pre> <pre> * Add a platform (ios or Android): ionic platform add ios [android]</pre>
+            <br> Note: iOS development requires OS X currently See the Android Platform Guide for full Android installation instructions: https://cordova.apache.org/docs/en/edge/guide_platforms_android_index.md.html
+            <br>
+            <br> <pre>* Build your app: ionic build 'PLATFORM'</pre> <pre> * Simulate your app: ionic emulate 'PLATFORM'</pre> <pre>* Run your app on a device: ionic run 'PLATFORM'</pre> <pre>* Package an app using Ionic package service: ionic package 'MODE' 'PLATFORM'</pre> <pre>For more help use ionic --help or ionic docs</pre> <pre>Visit the Ionic docs: http://ionicframework.com/docs</pre> </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,27 @@
+<ion-view view-title="Ionic - JS Backdrop">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p><b>Ionic Backdrop</b> will overlay content of the screen when applied. It will appear below other overlays (popup, loading etc...). There are two methods that can be used for managing backdrop service. <b>$ionicBackdrop.retain()</b> will apply backdrop over the components, and <b>$ionicBackdrop.release()</b> will remove it.</p>
+         <hr>
+<h4>Using Backdrop</h4>
+<p>Example below shows how to use backdrop. We are adding <b>$ionicBackdrop</b> as a dependency to controller, then creating <b>$scope.showBackdrop()</b> function that will call <b>retain</b> method immediately and after three seconds it will call <b>release</b> method. We are using <b>$timeout</b> for the release method so we need to add it as a controller dependency too.</p>
+<p>You will notice how the screen is darker in the image below since the backdrop is applied.</p>
+<pre class="prettyprint notranslate">
+.controller('myCtrl', function($scope, $ionicBackdrop, $timeout) {
+
+   $scope.showBackdrop = function() {
+      $ionicBackdrop.retain();
+		
+      $timeout(function() {
+         $ionicBackdrop.release();
+      }, 3000);
+   };
+})
+</pre>
+         <hr>
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

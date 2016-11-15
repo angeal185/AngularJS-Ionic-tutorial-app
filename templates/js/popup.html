@@ -1,0 +1,342 @@
+<ion-view view-title="Ionic - JS Popup">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p>This service is used for creating popup window on top of the regular view which will be used for interaction with users. There are four types of popups &minus; <b>show</b>, <b>confirm</b>, <b>alert</b> and <b>prompt</b>.</p>
+<hr><h4>Using Show Popup</h4>
+<p>This popup is the most complex of all. To trigger popups we need to inject <b>$ionicPopup</b> service to our controller and then just add a method that will trigger the popup we want to use, in this case <b>$ionicPopup.show()</b>. The <b>onTap(e)</b> function can be used for adding <b>e.preventDefault()</b> method that will keep the popup open if there is no change applied to the input. When popup is closed, the promise object will be resolved.</p>
+<hr><h4>Controller Code</h3>
+<pre class="prettyprint notranslate">
+.controller('MyCtrl', function($scope, $ionicPopup) {
+
+   // When button is clicked, the popup will be shown...
+   $scope.showPopup = function() {
+      $scope.data = {}
+    
+      // Custom popup
+      var myPopup = $ionicPopup.show({
+         template: '&lt;input type = "text" ng-model = "data.model"&gt;',
+         title: 'Title',
+         subTitle: 'Subtitle',
+         scope: $scope,
+			
+         buttons: [
+            { text: 'Cancel' }, {
+               text: '&lt;b&gt;Save&lt;/b&gt;',
+               type: 'button-positive',
+                  onTap: function(e) {
+						
+                     if (!$scope.data.model) {
+                        //don't allow the user to close unless he enters model...
+                           e.preventDefault();
+                     } else {
+                        return $scope.data.model;
+                     }
+                  }
+            }
+         ]
+      });
+
+      myPopup.then(function(res) {
+         console.log('Tapped!', res);
+      });    
+   };
+
+})
+</pre>
+<hr><h4>HTML Code</h3>
+<pre class="prettyprint notranslate">
+&lt;button class = "button" ng-click = "showPopup()"&gt;Add Popup Show&lt;/button&gt;
+</pre>
+<p>You are probably noticing in above example some options used. The following table will explain all of the options and their use case.</p>
+<hr><h4>Show Popup Options</h3>
+<table class="table table-bordered">
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Details</th>     
+</tr>
+<tr>
+<th>template</th>
+<td>string</td>
+<td>Inline HTML template of the popup.</td>
+</tr>
+<tr>
+<th>templateUrl</th>
+<td>string</td>
+<td>URL of the HTML template.</td>
+</tr>
+<tr>
+<th>title</th>
+<td>string</td>
+<td>The title of the popup.</td>
+</tr>
+<tr>
+<th>subTitle</th>
+<td>string</td>
+<td>The subtitle of the popup.</td>
+</tr>
+<tr>
+<th>cssClass</th>
+<td>string</td>
+<td>The CSS class name of the popup.</td>
+</tr>
+<tr>
+<th>scope</th>
+<td>Scope</td>
+<td>A scope of the popup.</td>
+</tr>
+<tr>
+<th>buttons</th>
+<td>Array[Object]</td>
+<td>Buttons that will be placed in footer of the popup. They can use their own properties and methods. <b>text</b> is displayed on top of the button, <b>type</b> is the Ionic class used for the button, <b>onTap</b> is function that will be triggered when the button is tapped. Returning a value will cause the promise to resolve with the given value.</td>
+</tr>
+</table>
+<hr><h4>Using Confirm Popup</h4>
+<p>Confirm popup is simpler version of Ionic popup. It contains Cancel and OK buttons that users can press to trigger corresponding functionality. It returns the promise object that is resolved when one of the buttons are pressed.</p>
+<hr><h4>Controller Code</h3>
+<pre class="prettyprint notranslate">
+.controller('MyCtrl', function($scope, $ionicPopup) {
+
+   // When button is clicked, the popup will be shown...
+   $scope.showConfirm = function() {
+	
+      var confirmPopup = $ionicPopup.confirm({
+         title: 'Title',
+         template: 'Are you sure?'
+      });
+
+      confirmPopup.then(function(res) {
+         if(res) {
+            console.log('Sure!');
+         } else {
+            console.log('Not sure!');
+         }
+      });
+		
+   };
+
+})
+</pre>
+<hr><h4>HTML Code</h3>
+<pre class="prettyprint notranslate">
+&lt;button class = "button" ng-click = "showConfirm()"&gt;Add Popup Confirm&lt;/button&gt;
+</pre>
+<p>The following table explains the options that can be used for this popup.</p>
+<hr><h4>Confirm Popup Options</h3>
+<table class="table table-bordered">
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Details</th>     
+</tr>
+<tr>
+<th>template</th>
+<td>string</td>
+<td>Inline HTML template of the popup.</td>
+</tr>
+<tr>
+<th>templateUrl</th>
+<td>string</td>
+<td>URL of the HTML template.</td>
+</tr>
+<tr>
+<th>title</th>
+<td>string</td>
+<td>The title of the popup.</td>
+</tr>
+<tr>
+<th>subTitle</th>
+<td>string</td>
+<td>The subtitle of the popup.</td>
+</tr>
+<tr>
+<th>cssClass</th>
+<td>string</td>
+<td>The CSS class name of the popup.</td>
+</tr>
+<tr>
+<th>cancelText</th>
+<td>string</td>
+<td>The text for the Cancel button.</td>
+</tr>
+<tr>
+<th>cancelType</th>
+<td>string</td>
+<td>The Ionic button type of the Cancel button.</td>
+</tr>
+<tr>
+<th>okText</th>
+<td>string</td>
+<td>The text for the OK button.</td>
+</tr>
+<tr>
+<th>okType</th>
+<td>string</td>
+<td>The Ionic button type of the OK button.</td>
+</tr>
+</table>
+<hr><h4>Using Alert Popup</h4>
+<p>Alert is simple popup that is used for displaying alert information to the user. It has only one button that is used to close the popup and resolve the popups promise object.</p>
+<hr><h4>Controller Code</h3>
+<pre class="prettyprint notranslate">
+.controller('MyCtrl', function($scope, $ionicPopup) {
+
+   $scope.showAlert = function() {
+	
+      var alertPopup = $ionicPopup.alert({
+         title: 'Title',
+         template: 'Alert message'
+      });
+
+      alertPopup.then(function(res) {
+         // Custom functionality....
+      });
+   };
+
+})
+</pre>
+<hr><h4>HTML Code</h3>
+<pre class="prettyprint notranslate">
+&lt;button class = "button" ng-click = "showAlert()"&gt;Add Popup Alert&lt;/button&gt;
+</pre>
+<p>Following table shows the options that can be used for alert popup.</p>
+<hr><h4>Alert Popup Options</h3>
+<table class="table table-bordered">
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Details</th>     
+</tr>
+<tr>
+<th>template</th>
+<td>string</td>
+<td>Inline HTML template of the popup.</td>
+</tr>
+<tr>
+<th>templateUrl</th>
+<td>string</td>
+<td>URL of the HTML template.</td>
+</tr>
+<tr>
+<th>title</th>
+<td>string</td>
+<td>The title of the popup.</td>
+</tr>
+<tr>
+<th>subTitle</th>
+<td>string</td>
+<td>The subtitle of the popup.</td>
+</tr>
+<tr>
+<th>cssClass</th>
+<td>string</td>
+<td>The CSS class name of the popup.</td>
+</tr>
+<tr>
+<th>okText</th>
+<td>string</td>
+<td>The text for the OK button.</td>
+</tr>
+<tr>
+<th>okType</th>
+<td>string</td>
+<td>The Ionic button type of the OK button.</td>
+</tr>
+</table>
+<hr><h4>Using Prompt Popup</h4>
+<p>Last Ionic popup that can be created using Ionic is <b>prompt</b>. It has OK button that resolves promise with value from the input and Cancel button that resolves with undefined value.</p>
+<hr><h4>Controller Code</h3>
+<pre class="prettyprint notranslate">
+.controller('MyCtrl', function($scope, $ionicPopup) {
+
+   $scope.showPrompt = function() {
+	
+      var promptPopup = $ionicPopup.prompt({
+         title: 'Title',
+         template: 'Template text',
+         inputType: 'text',
+         inputPlaceholder: 'Placeholder'
+      });
+        
+      promptPopup.then(function(res) {
+         console.log(res);
+      });
+		
+   };
+
+})
+</pre>
+<hr><h4>HTML Code</h3>
+<pre class="prettyprint notranslate">
+&lt;button class = "button" ng-click = "showPrompt()"&gt;Add Popup Prompt&lt;/button&gt;
+</pre>
+<p>Following table shows options that can be used for prompt popup.</p>
+<hr><h4>Prompt Popup Options</h3>
+<table class="table table-bordered">
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Details</th>     
+</tr>
+<tr>
+<th>template</th>
+<td>string</td>
+<td>Inline HTML template of the popup.</td>
+</tr>
+<tr>
+<th>templateUrl</th>
+<td>string</td>
+<td>URL of the HTML template.</td>
+</tr>
+<tr>
+<th>title</th>
+<td>string</td>
+<td>The title of the popup.</td>
+</tr>
+<tr>
+<th>subTitle</th>
+<td>string</td>
+<td>The subtitle of the popup.</td>
+</tr>
+<tr>
+<th>cssClass</th>
+<td>string</td>
+<td>The CSS class name of the popup.</td>
+</tr>
+<tr>
+<th>inputType</th>
+<td>string</td>
+<td>The type for the input.</td>
+</tr>
+<tr>
+<th>inputPlaceholder</th>
+<td>string</td>
+<td>A placeholder for the input.</td>
+</tr>
+<tr>
+<th>cancelText</th>
+<td>string</td>
+<td>The text for the Cancel button.</td>
+</tr>
+<tr>
+<th>cancelType</th>
+<td>string</td>
+<td>The Ionic button type of the Cancel button.</td>
+</tr>
+<tr>
+<th>okText</th>
+<td>string</td>
+<td>The text for the OK button.</td>
+</tr>
+<tr>
+<th>okType</th>
+<td>string</td>
+<td>The Ionic button type of the OK button.</td>
+</tr>
+</table>
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

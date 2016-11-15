@@ -1,0 +1,125 @@
+<ion-view view-title="Ionic - JS Side Menu">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         
+         <p>Side menu is one of the most used Ionic components. Side menu can be opened by swiping to the left or right or by triggering the button created for that purpose.</p>
+<hr><h4>Using Side Menu</h4>
+<p>First element that we need is <b>ion-side-menus</b>. This element is used for connecting side menu with all screens that will use it. <b>ion-side-menu-content</b> element is where the content will be placed and <b>ion-side-menu</b> element is the place where we can put <b>side</b> directive. We will add side menu to <b>index.html</b> and place <b>ion-nav-view</b> inside side menu content. This way the side menu can be used throughout entire app.</p>
+<hr><h4>index.html</h4>
+<pre class="prettyprint notranslate">
+&lt;ion-side-menus&gt;
+
+   &lt;ion-side-menu&gt;side = "left"&gt;
+      &lt;h1&gt;SIde Menu&lt;/h1&gt;
+   &lt;/ion-side-menu&gt;
+
+   &lt;ion-side-menu-content&gt;
+      &lt;ion-nav-view&gt;
+      &lt;/ion-nav-view&gt;
+   &lt;/ion-side-menu-content&gt;
+
+&lt;/ion-side-menus&gt;
+</pre>
+<p>Now we will create button with <b>menu-toggle = "left"</b> directive. This button will usually be placed in the apps header bar but we will add it in our template file for the purpose of better understanding. Now when the button is tapped or when we swipe to the right, the side menu will open. You could also set <b>menu-close</b> directive if you would like to have one button only for closing side menu, but we will use toggle button for this.</p>
+<hr><h4>HTML Template</h4>
+<pre class="result notranslate">
+&lt;button menu-toggle = "left" class = "button button-icon icon ion-navicon"&gt;&lt;/button&gt;
+</pre>
+<p></p>
+<p>You can add some additional attributes to <b>ion-side-menus</b> element. <b>enable-menu-with-back-views</b> can be set to false to disable side menu when the back button is showed. This will also hide <b>menu-toggle</b> button from the header. The other attribute is <b>delegate-handle</b> that will be use for connection with <b>$ionicSideMenuDelegate</b>. This will be covered later.</p>
+<p><b>ion-side-menu-content</b> element can use its own attribute. When <b>drag-content</b> attribute is set to false, it will disable ability to open side menu by swiping content screen. <b>edge-drag-threshold</b> attribute has default value of 25. This means that swiping is allowed only 25 pixels from the left and right edge of the screen. We can change this number value or we can set it to <b>false</b> to enable swiping on entire screen or <b>true</b> to disable it.</p>
+<p><b>ion-side-menu</b> can use <b>side</b> attribute that we showed in example above. It will determine weather the menu should appear from the left or the right side. <b>is-enabled</b> attribute  with false value will disable side menu, and <b>width</b> attribute value is number that represents how wide side menu should be. Default value is 275.</p>
+<hr><h4>Side Menu Delegate</h4>
+<p><b>$ionicSideMenuDelegate</b> is service used for controlling all side menus in the app. We will show you how to use it, and then we will go through all the options available. Like all Ionic services, we need to add it as dependency to our controller and the use it inside controllers scope. Now when we click the button, all of the side menus will open.</p>
+<hr><h4>Controller Code</h4>
+<pre class="prettyprint notranslate">
+.controller('MyCtrl', function($scope, $ionicSideMenuDelegate) {
+   $scope.toggleLeftSideMenu = function() {
+      $ionicSideMenuDelegate.toggleLeft();
+   };
+})
+</pre>
+<hr><h4>HTML Code</h4>
+<pre class="prettyprint notranslate">
+&lt;button class = "button button-icon icon ion-navicon" ng-click = "toggleLeft()"&gt;&lt;/button&gt;
+</pre>
+<p>The following table shows <b>$ionicScrollDelegate</b> methods.</p>
+<hr><h4>Delegate Methods</h4>
+<table class="table table-bordered" style="font-size:11px;">
+<tr>
+<th>Method</th>
+<th>parms</th>
+<th>Type</th>
+<th>Details</th>     
+</tr>
+<tr>
+<th>toggleLeft(parm)</th>
+<td>isOpen</td>
+<td>boolean</td>
+<td>Used for opening or closing side menu.</td>
+</tr>
+<tr>
+<th>toggleRight(parm)</th>
+<td>isOpen</td>
+<td>boolean</td>
+<td>Used for opening or closing side menu.</td>
+</tr>
+<tr>
+<th>getOpenRatio()</th>
+<td>/</td>
+<td>/</td>
+<td>Returns ratio of open part over menu width. If half of the menu is open from the left, the ration will be 0.5. If side menu is closed, it will return 0. If half of the menu is open from the right side, it will return -0.5.</td>
+</tr>
+<tr>
+<th>isOpen()</th>
+<td>/</td>
+<td>boolean</td>
+<td>Returns true if side menu is open, false if it is closed.</td>
+</tr>
+<tr>
+<th>isOpenLeft()</th>
+<td>/</td>
+<td>boolean</td>
+<td>Returns true if left side menu is open, false if it is closed.</td>
+</tr>
+<tr>
+<th>isOpenRight()</th>
+<td>/</td>
+<td>boolean</td>
+<td>Returns true if right side menu is open, false if it is closed.</td>
+</tr>
+<tr>
+<th>getScroll Position()</th>
+<td>/</td>
+<td>/</td>
+<td>Returns object with two number as properties: <b>left</b> and <b>right</b>. These numbers represent the distance the user has scrolled from the left and from the top respectively.</td>
+</tr>
+<tr>
+<th>canDrag Content (parm1)</th>
+<td>canDrag</td>
+<td>boolean</td>
+<td>Whether the content can be dragged to open side menu.</td>
+</tr>
+<tr>
+<th>edgeDrag Threshold (parm1)</th>
+<td>value</td>
+<td>boolean | number</td>
+<td>If the value is <b>true</b>, the side menu can be opened by dragging 25px from the edges of the screen. If it is false, dragging is disabled. We can set any number that will represent pixel value from the left and right edge of the screen.</td>
+</tr>
+<tr>
+<th>$getBy Handle(parm1)</th>
+<td>handle</td>
+<td>string</td>
+<td><p>Used to connect methods to the particular side menu view with the same handle.</p>
+<b>$ionicSideMenuDelegate.
+$getByHandle('my-handle').toggleLeft();</b></td>
+</tr>
+</table>
+
+         
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

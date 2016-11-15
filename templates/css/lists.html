@@ -1,0 +1,94 @@
+<ion-view view-title="Ionic - Lists">
+  <ion-content overflow-scroll="true" padding="true" class="has-header"><div class="IOimgsize">
+   <hr />
+<p><b>Lists</b>  are one of the most popular elements of any web or mobile application. They are usually used for displaying various information. They can be combined with other HTML elements for creating different menus, tabs or just to break the monotony of pure text files. Ionic framework offers different list types to make their usage easy. 
+</p>
+
+<hr><h4>Creating Ionic List</h4>
+<p>Every list is created with two elements. When you want to create basic list your <b>&lt;ul&gt;</b> tag needs to have <b>list</b> class assigned, and your <b>&lt;li&gt;</b> tag will use <b>item</b> class. Intersting thing is also that you don't even need to use <b>&lt;ul&gt;</b>, <b>&lt;ol&gt;</b> and <b>&lt;li&gt;</b> tags for your lists. You can use any other elements, but important thing is to add <b>list</b> and <b>item</b> classes appropriately.
+</p>
+<pre class="prettyprint notranslate">
+&lt;div class="list"&gt;
+   &lt;div class="item"&gt;Item 1&lt;/div&gt;
+   &lt;div class="item"&gt;Item 2&lt;/div&gt;
+   &lt;div class="item"&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+
+<hr><h4>Inset List</h4>
+<p>When you need a list to fill your own container, you can add <b>list-inset</b> after your <b>list</b> class. This will add some margin to it and it will adjust list size to your container.</p>
+<pre class="prettyprint notranslate">
+&lt;div class="list list-inset"&gt;
+   &lt;div class="item"&gt;Item 1&lt;/div&gt;
+   &lt;div class="item"&gt;Item 2&lt;/div&gt;
+   &lt;div class="item"&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+
+
+<hr><h4>Item Dividers</h4>
+<p>Dividers are used for organizing some elements into logical groups. Ionic gives us <b>item-divider</b> class for this. Again, like with all the other Ionic elements we just need to add <b>item-divider</b> class after the <b>item</b> class. Item dividers are usefull as a list headers since they have stronger styling then other list items by default.</p>
+
+<pre class="prettyprint notranslate">
+&lt;div class="list"&gt;
+   &lt;div class="item item-divider"&gt;Item Divider 1&lt;/div&gt;
+   &lt;div class="item"&gt;Item 1&lt;/div&gt;
+   &lt;div class="item"&gt;Item 2&lt;/div&gt;
+   &lt;div class="item"&gt;Item 3&lt;/div&gt;
+
+   &lt;div class="item item-divider"&gt;Item Divider 2&lt;/div&gt;
+   &lt;div class="item"&gt;Item 4&lt;/div&gt;
+   &lt;div class="item"&gt;Item 5&lt;/div&gt;
+   &lt;div class="item"&gt;Item 6&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<hr><h4>Adding Icons</h4>
+<p>We already showed you how to add icons to your buttons. When adding icons to list items you need to choose what side you want to place them. There are <b>item-icon-left</b> and item-icon-right classes for this. You can also combine those two classes if you want to have your Icons on both sides. Finally there is <b>item-note</b> class to add text note to your item.</p>
+<pre class="prettyprint notranslate">
+&lt;div class="list"&gt;
+   &lt;div class="item item-icon-left"&gt;
+      &lt;i class="icon ion-home"&gt;&lt;/i&gt;
+      Left side Icon
+   &lt;/div&gt;
+
+   &lt;div class="item item-icon-right"&gt;
+      &lt;i class="icon ion-star"&gt;&lt;/i&gt;
+      Right side Icon
+   &lt;/div&gt;
+
+   &lt;div class="item item-icon-left item-icon-right"&gt;
+      &lt;i class="icon ion-home"&gt;&lt;/i&gt;
+      &lt;i class="icon ion-star"&gt;&lt;/i&gt;
+      Both sides Icons
+   &lt;/div&gt;
+   
+   &lt;div class="item item-icon-left"&gt;
+      &lt;i class="icon ion-home"&gt;&lt;/i&gt;
+      &lt;span class="text-note"&gt;Text note&lt;/span&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<hr><h4>Adding Avatars and Thumbnails</h4>
+<p>Avatars and thumbnails are similiar. The main difference is that avatars are smaller then thumbnails. Thumbnails are covering most of the full height of the list item while avatars are medium sized circle images. The classes that are used are <b>item-avatar</b> and <b>item-thumbnail.</b>. You can also chose what side you want to place your avatars and thumbnails as shown in thumbnail code example below.</p>
+<pre class="prettyprint notranslate">
+&lt;div class="list"&gt;
+   &lt;div class="item item-avatar"&gt;
+      &lt;img src="my-image.png"&gt;
+      &lt;h3&gt;Avatar&lt;/h3&gt;
+   &lt;/div&gt;
+
+   &lt;div class="item item-thumbnail-left"&gt;
+      &lt;img src="my-image.png"&gt;
+      &lt;h3&gt;Thumbnail&lt;/h3&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<hr />
+      </div>
+      
+      <br><br>
+  </ion-content>
+</ion-view>

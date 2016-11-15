@@ -1,0 +1,69 @@
+<ion-view view-title="Ionic - Range">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+    <div class="IOimgsize">
+      <hr />
+<p>Ionic range is used to choose and display level of something. It will represent the actual value in corelation to maximal and minimal value. Ionic offer simple way of working with range.</p>
+<hr><h4>Using Range</h4>
+<p>Range are used inside item element. The class that is used is <b>range</b>. We will place this class after the <b>item</b> class. This will prepare container where the range will be placed. After creating container we need to add <b>input</b> and assign <b>range</b> type to it and <b>name</b> attribute.</p>
+<pre class="prettyprint notranslate">
+&lt;div class = "item range"&gt;
+   &lt;input type = "range" name = "range1"&gt;
+&lt;/div&gt;
+</pre>
+
+<hr><h4>Adding Icons</h4>
+<p>Range will usually require icons to display data clearly. We just need to add icons before and after range input to place them on both sides of the range element.</p>
+<pre class="prettyprint notranslate">
+&lt;div class = "item range"&gt;
+   &lt;i class = "icon ion-volume-low"&gt;&lt;/i&gt;
+   &lt;input type = "range" name = "volume"&gt;
+   &lt;i class = "icon ion-volume-high"&gt;&lt;/i&gt;
+&lt;/div&gt;
+</pre>
+<hr><h4>Styling Range</h4>
+<p>Our next example will show you how to style range with Ionic colors. Color classes will use <b>range</b> prefix. We will create list with nine ranges and style it differently.</p>
+<pre class="prettyprint notranslate">
+&lt;div class = "list"&gt;
+   &lt;div class = "item range range-light"&gt;
+      &lt;input type = "range" name = "volume"&gt;
+   &lt;/div&gt;
+	
+   &lt;div class = "item range range-stable"&gt;
+      &lt;input type = "range" name = "volume"&gt;
+   &lt;/div&gt;
+	
+   &lt;div class = "item range range-positive"&gt;
+      &lt;input type = "range" name = "volume"&gt;
+   &lt;/div&gt;
+	
+   &lt;div class = "item range range-calm"&gt;
+      &lt;input type = "range" name = "volume"&gt;
+   &lt;/div&gt;
+	
+   &lt;div class = "item range range-balanced"&gt;
+      &lt;input type = "range" name = "volume"&gt;
+   &lt;/div&gt;
+	
+   &lt;div class = "item range range-energized"&gt;
+      &lt;input type = "range" name = "volume"&gt;
+   &lt;/div&gt;
+	
+   &lt;div class = "item range range-assertive"&gt;
+      &lt;input type = "range" name = "volume"&gt;
+   &lt;/div&gt;
+	
+   &lt;div class = "item range range-royal"&gt;
+      &lt;input type = "range" name = "volume"&gt;
+   &lt;/div&gt;
+	
+   &lt;div class = "item range range-dark"&gt;
+      &lt;input type = "range" name = "volume"&gt;
+   &lt;/div&gt;
+	
+&lt;/div&gt;
+</pre>
+<hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

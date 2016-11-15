@@ -1,0 +1,66 @@
+<ion-view view-title="Ionic - Native Audio">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         
+         <p>This plugin is used for adding native audio sounds to Ionic app.</p><hr>
+<h4>Using Native Audi4</h4>
+<p>To be able to use this plugin we first need to install it. Open the command prompt window and add the Cordova plugin.</p>
+<pre class="result notranslate">
+C:\Users\Username\Desktop\MyApp>cordova plugin add cordova-plugin-nativeaudio
+</pre>
+<p>Before we start using this plugin we will need audio file. For simplicity we will save our <b>click.mp3</b> file inside <b>js</b> folder but you can place it wherever you want.</p>
+<p>Next thing we want to do is to preload audio file. There are two options available. <b>preloadSimple</b> is used for simple sounds that will be played once, and <b>preloadComplex</b> for sounds that will be played as looping sounds or background audio. Add the following code to your controller to preload audio file. We need to be sure that Ionic platform is loaded before we can preload audio file.</p>
+<hr><h4>Controller Code</h4>
+<pre class="prettyprint notranslate">
+$ionicPlatform.ready(function() {
+   $cordovaNativeAudio
+   .preloadSimple('click', 'js/click.mp3')
+	
+   .then(function (msg) {
+      console.log(msg);
+   }, function (error) {
+      console.log(error);
+   });
+
+   $cordovaNativeAudio.preloadComplex('click', 'js/click.mp3', 1, 1)
+	
+   .then(function (msg) {
+      console.log(msg);
+   }, function (error) {
+      console.error(error);
+   });
+	
+});
+</pre>
+<p>In the same controller we will add code for playing audio. Our <b>$timeout</b> function will stop and unload looping audio after five seconds.</p>
+<pre class="prettyprint notranslate">
+$scope.playAudio = function () {
+   $cordovaNativeAudio.play('click');
+};
+
+$scope.loopAudio = function () {
+   $cordovaNativeAudio.loop('click');
+
+   $timeout(function () {
+      $cordovaNativeAudio.stop('click');
+      $cordovaNativeAudio.unload('click');
+   }, 5000);
+}
+</pre>
+<p>The last thing we need is to create buttons for playing and looping audio.</p><hr>
+<h4>HTML Code</h4>
+<pre class="prettyprint notranslate">
+&lt;button class = "button" ng-click = "playAudio()"&gt;PLAY&lt;/button&gt;
+
+&lt;button class = "button" ng-click = "loopAudio()"&gt;LOOP&lt;/button&gt;
+</pre>
+<p>When we tap on play button we will hear the sound once and when we tap on loop button the sound will loop for five seconds and then stop. This plugin works only on emulator or mobile device.</p>
+
+             
+         
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

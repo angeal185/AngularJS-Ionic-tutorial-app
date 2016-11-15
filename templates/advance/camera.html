@@ -1,0 +1,167 @@
+<ion-view view-title="Ionic - Camera">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p>Cordova camera plugin is using native camera for taking pictures or getting images from the image gallery.</p><hr>
+<h4>Using Camera</h4>
+<p>Open your project root folder in command prompt, then download and install cordova camera plugin.</p>
+<pre class="result notranslate">
+C:\Users\Username\Desktop\MyApp> cordova plugin add org.apache.cordova.camera
+</pre>
+<p>Now we will create service for using camera plugin. We will use AngularJs factory and promise object <b>$q</b> that needs to be injected to the factory.</p>
+<hr><h4>services.js Code</h4>
+<pre class="prettyprint notranslate">
+.factory('Camera', function($q) {
+
+   return {
+      getPicture: function(options) {
+         var q = $q.defer();
+
+         navigator.camera.getPicture(function(result) {
+            q.resolve(result);
+         }, function(err) {
+            q.reject(err);
+         }, options);
+
+         return q.promise;
+      }
+   }
+
+});
+</pre>
+<p>To use this service in the app we need to inject it to controller as a dependency. Cordova camera API provides <b>getPicture</b> method which is used for taking photos using native camera. You can additionally customize the camera settings by passing <b>options</b> parameter to the <b>takePicture</b> function. Copy this code sample to your controller to trigger this behavior. It will open camera application and return success callback function with the image data or error callback function with error message. We will also need two buttons that will call the functions we are about to create and we need to show the image on the screen.</p>
+<hr><h4>HTML Code</h4>
+<pre class="prettyprint notranslate">
+&lt;button class = "button" ng-click = "takePicture()"&gt;Take Picture&lt;/button&gt;
+&lt;button class = "button" ng-click = "getPicture()"&gt;Open Gallery&lt;/button&gt;
+&lt;img ng-src = "{{user.picture}}"&gt;
+</pre>
+<hr><h4>Controller Code</h4>
+<pre class="prettyprint notranslate">
+.controller('MyCtrl', function($scope, Camera) {
+
+   $scope.takePicture = function (options) {
+	
+      var options = {
+         quality : 75,
+         targetWidth: 200,
+         targetHeight: 200,
+         sourceType: 1
+      };
+
+      Camera.getPicture(options).then(function(imageData) {
+         $scope.picture = imageData;;
+      }, function(err) {
+         console.log(err);
+      });
+		
+   };
+
+})
+</pre>
+         <hr>
+
+<p>If you want to use images from your gallery, the only thing you need to change is the <b>sourceType</b> method from your options parameter. This change will open a dialog popup instead of camera and allow you to choose the image you want from the device. You can see below that <b>sourceType</b> option is changed to 0. Now when you tap the second button, it will open the file menu from the device.
+</p>
+<hr><h4>Controller Code</h4>
+<pre class="prettyprint notranslate">
+.controller('MyCtrl', function($scope, Camera) {
+
+   $scope.getPicture = function (options) {
+	
+      var options = {
+         quality : 75,
+         targetWidth: 200,
+         targetHeight: 200,
+         sourceType: 0
+      };
+
+      Camera.getPicture(options).then(function(imageData) {
+         $scope.picture = imageData;;
+      }, function(err) {
+         console.log(err);
+      });
+   };  
+
+})
+</pre>
+         <hr>
+<p>When you save the image you took, it will appear on the screen. You can style it the way you want.</p>
+<p>There are other options that can be used. You can see it in the following table.
+</p>
+<table class="table table-bordered">
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Details</th>     
+</tr>
+<tr>
+<th>quality</th>
+<td>Number</td>
+<td>The quality of the image, range 0-100</td>
+</tr>
+<tr>
+<th>destinationType</th>
+<td>Number</td>
+<td>Format of the image.</td>
+</tr>
+<tr>
+<th>sourceType</th>
+<td>Number</td>
+<td>Used for setting the source of the picture.</td>
+</tr>
+<tr>
+<th>allowEdit</th>
+<td>boolean</td>
+<td>Used for allowing editing of the image.</td>
+</tr>
+<tr>
+<th>encodingType</th>
+<td>Number</td>
+<td>Value 0 will set JPEG, and value 1 will set PNG.</td>
+</tr>
+<tr>
+<th>targetWidth</th>
+<td>Number</td>
+<td>Used for scaling image width.</td>
+</tr>
+<tr>
+<th>targetHeight</th>
+<td>Number</td>
+<td>Used for scaling image height.</td>
+</tr>
+<tr>
+<th>mediaType</th>
+<td>string</td>
+<td>Used for setting the media type.</td>
+</tr>
+<tr>
+<th>cameraDirection</th>
+<td>Number</td>
+<td>Value 0 will set the back camera, and value 1 will set the front camera.</td>
+</tr>
+<tr>
+<th>popoverOptions</th>
+<td>string</td>
+<td>iOS-only options that specify popover location in iPad.</td>
+</tr>
+<tr>
+<th>saveToPhotoAlbum</th>
+<td>boolean</td>
+<td>Used for saving image to photo album.</td>
+</tr>
+<tr>
+<th>correctOrientation</th>
+<td>boolean</td>
+<td>Used for correcting orientation of the captured images.</td>
+</tr>
+</table>
+
+         
+             
+         
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,85 @@
+<ion-view view-title="Ionic - JS List">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p>We already discussed Ionic CSS list elements. In this tutorial we will show you JavaScript lists. They allow us to use some new features like swipe, drag and remove.</p>
+<hr><h4>Using List</h4>
+<p>The directives used for displaying lists and items are <b>ion-list</b> and <b>ion-item</b> as showed below.</p>
+<pre class="prettyprint notranslate">
+&lt;ion-list&gt;
+   &lt;ion-item&gt;
+      Item 1 
+   &lt;/ion-item&gt;
+	
+   &lt;ion-item&gt;
+      Item 2 
+   &lt;/ion-item&gt;
+	
+   &lt;ion-item&gt;
+      Item 3  
+   &lt;/ion-item&gt;
+&lt;/ion-list&gt;
+</pre><hr>
+<hr><h4>Delete Button</h4>
+<p>This button can be added by using <b>ion-delete-button</b> directive. You can use any icon class you want. Since we don't always want to show delete buttons because users might accidentally tap it and trigger delete process we can add <b>show-delete</b> attribute to <b>ion-list</b> and connect it with <b>ng-model</b>. In the example below we will use <b>ion-toggle</b> as a model. When toggle is on delete, the buttons will appear on our list items.</p>
+<pre class="prettyprint notranslate">
+&lt;ion-list show-delete = "showDelete1"&gt;
+   &lt;ion-item&gt;
+      &lt;ion-delete-button class = "ion-minus-circled"&gt;&lt;/ion-delete-button&gt;
+      Item 1
+   &lt;/ion-item&gt;
+	
+   &lt;ion-item&gt;
+      &lt;ion-delete-button class = "ion-minus-circled"&gt;&lt;/ion-delete-button&gt;
+      Item 2
+   &lt;/ion-item&gt;
+&lt;/ion-list&gt;
+
+&lt;ion-toggle ng-model = "showDelete2"&gt;
+   Show Delete 2
+&lt;/ion-toggle&gt;
+</pre><hr>
+<hr><h4>Reorder Button</h4>
+<p>Ionic directive for reorder button is <b>ion-reorder-button</b>. The element we created has <b>on-reorder</b> attribute that will trigger the function from our controller whenever user is dragging this element.</p>
+<pre class="prettyprint notranslate">
+&lt;ion-list show-reorder = "true"&gt;
+   &lt;ion-item ng-repeat = "item in items"&gt;
+      Item {{item.id}}
+      &lt;ion-reorder-button class = "ion-navicon" on-reorder = "moveItem(item, $fromIndex, $toIndex)"&gt;&lt;/ion-reorder-button&gt;
+   &lt;/ion-item&gt;
+&lt;/ion-list&gt;
+</pre><hr>
+<pre class="prettyprint notranslate">
+$scope.items = [
+   {id: 1},
+   {id: 2},
+   {id: 3},
+   {id: 4}
+];
+
+$scope.moveItem = function(item, fromIndex, toIndex) {
+   $scope.items.splice(fromIndex, 1);
+   $scope.items.splice(toIndex, 0, item);
+};
+</pre><hr>
+<p>When we click the icon on the right we can drag element and move it to some other place in the list.</p>
+<hr><h4>Option Button</h4>
+<p>Option button is created using <b>ion-option-button</b> directive. These buttons are showed when list item is swiped to the left and we can hide it again by swiping item element to the right. You can see in example below two buttons that are hidden.</p>
+<pre class="prettyprint notranslate">
+&lt;ion-list&gt;
+   &lt;ion-item&gt;
+      Item with two buttons...
+      &lt;ion-option-button class = "button-positive"&gt;Button 1&lt;/ion-option-button&gt;
+      &lt;ion-option-button class = "button-assertive"&gt;Button 2&lt;/ion-option-button&gt;
+   &lt;/ion-item&gt;
+&lt;/ion-list&gt;
+</pre><hr>
+<p>When we swipe item element to the left, the text will be moved left and buttons will appear on the right side.</p>
+<hr><h4>Other Functions</h4>
+<p><b>collection-repeat</b> is updated version of AngularJs ng-repeat directive. It will only render visible elements on the screen and the rest will be updated as you scroll. This is important performance improvement when you are working with large lists. This directive can be combined with <b>item-width</b> and <b>item-height</b> attributes for further optimization of the list items.</p>
+<p>There are some other useful attributes for working with images inside your list. <b>item-render-buffer</b> represents number of items that are loaded after visible items. The higher this value is, the more items will be preloaded. <b>force-refresh-images</b> will fix an issue with source of the images while scrolling. Both of these classes will influence performance in a negative way.</p>
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

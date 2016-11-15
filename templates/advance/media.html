@@ -1,0 +1,145 @@
+<ion-view view-title="Ionic - Media">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p>This plugin allows us to record and playback audio files on a device.</p>
+<hr><h4>Using Media</h4>
+<p>As with all the other Cordova plugins, the first thing we need to do is to install it from command prompt window.</p>
+<pre class="result notranslate">
+C:\Users\Username\Desktop\MyApp>cordova plugin add cordova-plugin-media
+</pre>
+<p>Now we are ready to use the plugin. In the following code sample <b>src</b> is the source mp3 file that we will use for this tutorial. It is placed in <b>js</b> folder but we need to add <b>/android_asset/www/</b> before it so it can be used on android devices. Entire functionality is wrapped inside <b>$ionicPlatform.ready()</b> function to assure that everything is loaded before the plugin is used. After that we are creating <b>media</b> object by using <b>newMedia(src)</b> method. The <b>media</b> object is used for adding play, pause, stop and release functionalities. </p>
+<hr><h4>Controller Code</h4>
+<pre class="prettyprint notranslate">
+.controller('MyCtrl', function($scope, $ionicPlatform, $cordovaMedia) {
+
+   $ionicPlatform.ready(function() {
+      var src = "/android_asset/www/js/song.mp3";
+      var media = $cordovaMedia.newMedia(src);
+
+      $scope.playMedia = function() {
+         media.play();
+      };
+
+      $scope.pauseMedia = function() {
+         media.pause();
+      };
+
+      $scope.stopMedia = function() {
+         media.stop();
+      };
+
+      $scope.$on('destroy', function() {
+         media.release();
+      });
+
+   });
+	
+}
+</pre>
+<p>We will also create three buttons for calling play, pause and stop functions. </p>
+<pre class="prettyprint notranslate">
+&lt;button class = "button" ng-click = "playMedia()"&gt;PLAY&lt;/button&gt;
+
+&lt;button class = "button" ng-click = "pauseMedia()"&gt;PAUSE&lt;/button&gt;
+
+&lt;button class = "button" ng-click = "stopMedia()"&gt;STOP&lt;/button&gt;
+</pre>
+<p>We need to run it on emulator or mobile device for this plugin to work. When users tap on play button the <b>song.mp3</b> will start playing.</p>
+<p>You can see in the example above that we use <b>src</b> as an option parameter. There are other optional parameters that can be used for the <b>newMedia</b> method.</p>
+      <hr><h4>Optional parameters</h4>
+<table class="table table-bordered">
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Details</th>     
+</tr>
+<tr>
+<th>mediaSuccess</th>
+<td>function</td>
+<td>Called after current play/record or stop action has completed.</td>
+</tr>
+<tr>
+<th>mediaError</th>
+<td>function</td>
+<td>Invoked when there is an error.</td>
+</tr>
+<tr>
+<th>mediaStatus</th>
+<td>function</td>
+<td>Invoked to show status changes.</td>
+</tr>
+</table>
+<p>The next table will show all the methods available.</p>
+<hr><h4>Available methods</h4>
+<table class="table table-bordered">
+<tr>
+<th>Method</th>
+<th>Parm.</th>
+<th>Details</th>     
+</tr>
+<tr>
+<th>newMedia(parm1)</th>
+<th>src</th>
+<td>Returns media object that will be used for future methods. <b>src</b> is an URI of the audio content.</td>
+</tr>
+<tr>
+<th>getCurrentPosition</th>
+<th>/</th>
+<td>Returns the current position within an audio file.</td>
+</tr>
+<tr>
+<th>getDuration</th>
+<th>/</th>
+<td>Returns the duration of an audio file.</td>
+</tr>
+<tr>
+<th>play</th>
+<th>/</th>
+<td>Used to start or resume playing.</td>
+</tr>
+<tr>
+<th>pause</th>
+<th>/</th>
+<td>Used to pause playback.</td>
+</tr>
+<tr>
+<th>stop</th>
+<th>/</th>
+<td>Used to stop playing.</td>
+</tr>
+<tr>
+<th>release</th>
+<th>/</th>
+<td>Used to release audio resources.</td>
+</tr>
+<tr>
+<th>seekTo(parm1)</th>
+<th>ms</th>
+<td>Used to set the playback position in milliseconds.</td>
+</tr>
+<tr>
+<th>setVolume(parm1)</th>
+<th>volume</th>
+<td>Used to change volume. Range is from 0 to 1</td>
+</tr>
+<tr>
+<th>startRecord()</th>
+<th>/</th>
+<td>Used to start recording.</td>
+</tr>
+<tr>
+<th>stopRecord</th>
+<th>/</th>
+<td>Used to stop recording.</td>
+</tr>
+</table>
+
+         
+             
+         
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

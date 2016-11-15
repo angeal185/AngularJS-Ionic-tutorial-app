@@ -1,0 +1,520 @@
+<ion-view view-title="Ionic - JS Content">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         
+         <h4 class="api-title">
+
+ion-content
+
+
+
+
+</h4>
+
+<p>The ionContent directive provides an easy to use content area that can be configured<br />
+to use Ionic’s custom Scroll View, or the built in overflow scrolling of the browser.</p>
+
+<p>While we recommend using the custom Scroll features in Ionic in most cases, sometimes<br />
+(for performance reasons) only the browser’s native overflow scrolling will suffice,<br />
+and so we’ve made it easy to toggle between the Ionic scroll implementation and<br />
+overflow scrolling.</p>
+
+<p>You can implement pull-to-refresh with the <a href="/docs/api/directive/ionRefresher/"><code>ionRefresher</code></a><br />
+    
+    <h4 class="api-title">
+
+ion-refresher
+
+
+
+
+
+</h4>
+
+<p>Allows you to add pull-to-refresh to a scrollView.</p>
+
+<p>Place it as the first child of your <a href="/docs/api/directive/ionContent/"><code>ionContent</code></a> or<br />
+<a href="/docs/api/directive/ionScroll/"><code>ionScroll</code></a> element.</p>
+
+<p>When refreshing is complete, $broadcast the ‘scroll.refreshComplete’ event<br />
+from your controller.</p>
+
+<hr><h4 id="usage">Usage</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-content</span> <span class="na">ng-controller=</span><span class="s">"MyController"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-refresher</span>
+    <span class="na">pulling-text=</span><span class="s">"Pull to refresh..."</span>
+    <span class="na">on-refresh=</span><span class="s">"doRefresh()"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/ion-refresher&gt;</span>
+  <span class="nt">&lt;ion-list&gt;</span>
+    <span class="nt">&lt;ion-item</span> <span class="na">ng-repeat=</span><span class="s">"item in items"</span><span class="nt">&gt;&lt;/ion-item&gt;</span>
+  <span class="nt">&lt;/ion-list&gt;</span>
+<span class="nt">&lt;/ion-content&gt;</span>
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'testApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
+<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'MyController'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$http</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">doRefresh</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/new-items'</span><span class="p">)</span>
+     <span class="p">.</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">newItems</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">$scope</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="nx">newItems</span><span class="p">;</span>
+     <span class="p">})</span>
+     <span class="p">.</span><span class="k">finally</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+       <span class="c1">// Stop the ion-refresher from spinning</span>
+       <span class="nx">$scope</span><span class="p">.</span><span class="nx">$broadcast</span><span class="p">(</span><span class="s1">'scroll.refreshComplete'</span><span class="p">);</span>
+     <span class="p">});</span>
+  <span class="p">};</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<hr><h4 id="api" style="clear:both;">API</h4>
+
+<table class="table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        on-refresh
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>expression</code>
+      </td>
+      <td>
+        <p>Called when the user pulls down enough and lets go
+of the refresher.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        on-pulling
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>expression</code>
+      </td>
+      <td>
+        <p>Called when the user starts to pull down
+on the refresher.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        pulling-text
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>The text to display while the user is pulling down.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        pulling-icon
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>The icon to display while the user is pulling down.
+Default: &#39;ion-android-arrow-down&#39;.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        spinner
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>The <a href="/docs/api/directive/ionSpinner/"><code>ionSpinner</code></a> icon to display
+after user lets go of the refresher. The SVG <a href="/docs/api/directive/ionSpinner/"><code>ionSpinner</code></a>
+is now the default, replacing rotating font icons. Set to <code>none</code> to disable both the
+spinner and the icon.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        refreshing-icon
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>The font icon to display after user lets go of the
+refresher. This is depreicated in favor of the SVG <a href="/docs/api/directive/ionSpinner/"><code>ionSpinner</code></a>.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        disable-pulling-rotation
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>Disables the rotation animation of the pulling
+icon when it reaches its activated threshold. To be used with a custom <code>pulling-icon</code>.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+   
+directive, and infinite scrolling with the <a href="/docs/api/directive/ionInfiniteScroll/"><code>ionInfiniteScroll</code></a><br />
+directive.</p>
+
+<p>If there is any dynamic content inside the ion-content, be sure to call <code class="highlighter-rouge">.resize()</code> with <a href="/docs/api/service/$ionicScrollDelegate/"><code>$ionicScrollDelegate</code></a><br />
+after the content has been added.</p>
+
+<p>Be aware that this directive gets its own child scope. If you do not understand why this<br />
+is important, you can read <a href="https://docs.angularjs.org/guide/scope">https://docs.angularjs.org/guide/scope</a>.</p>
+        <hr><h4 id="usage">Usage</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-content</span>
+<span class="err">[</span><span class="na">delegate-handle=</span><span class="s">""</span><span class="err">]</span>
+<span class="err">[</span><span class="na">direction=</span><span class="s">""</span><span class="err">]</span>
+<span class="err">[</span><span class="na">locking=</span><span class="s">""</span><span class="err">]</span>
+<span class="err">[</span><span class="na">padding=</span><span class="s">""</span><span class="err">]</span>
+<span class="err">[</span><span class="na">scroll=</span><span class="s">""</span><span class="err">]</span>
+<span class="err">[</span><span class="na">overflow-scroll=</span><span class="s">""</span><span class="err">]</span>
+<span class="err">[</span><span class="na">scrollbar-x=</span><span class="s">""</span><span class="err">]</span>
+<span class="err">[</span><span class="na">scrollbar-y=</span><span class="s">""</span><span class="err">]</span>
+<span class="err">[</span><span class="na">start-x=</span><span class="s">""</span><span class="err">]</span>
+<span class="err">[</span><span class="na">start-y=</span><span class="s">""</span><span class="err">]</span>
+<span class="err">[</span><span class="na">on-scroll=</span><span class="s">""</span><span class="err">]</span>
+<span class="err">[</span><span class="na">on-scroll-complete=</span><span class="s">""</span><span class="err">]</span>
+<span class="err">[</span><span class="na">has-bouncing=</span><span class="s">""</span><span class="err">]</span>
+<span class="err">[</span><span class="na">scroll-event-interval=</span><span class="s">""</span><span class="err">]</span><span class="nt">&gt;</span>
+...
+<span class="nt">&lt;/ion-content&gt;</span>
+</code></pre>
+</div>
+
+<hr><h4 id="api" style="clear:both;">API</h4>
+
+<table class="table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        delegate-handle
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>The handle used to identify this scrollView
+with <a href="/docs/api/service/$ionicScrollDelegate/"><code>$ionicScrollDelegate</code></a>.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        direction
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>Which way to scroll. &#39;x&#39; or &#39;y&#39; or &#39;xy&#39;. Default &#39;y&#39;.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        locking
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>Whether to lock scrolling in one direction at a time. Useful to set to false when zoomed in or scrolling in two directions. Default true.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        padding
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>Whether to add padding to the content.
+Defaults to true on iOS, false on Android.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        scroll
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>Whether to allow scrolling of content.  Defaults to true.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        overflow-scroll
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>Whether to use overflow-scrolling instead of
+Ionic scroll. See <a href="/docs/api/provider/$ionicConfigProvider/"><code>$ionicConfigProvider</code></a> to set this as the global default.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        scrollbar-x
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>Whether to show the horizontal scrollbar. Default true.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        scrollbar-y
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>Whether to show the vertical scrollbar. Default true.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        start-x
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>Initial horizontal scroll position. Default 0.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        start-y
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>Initial vertical scroll position. Default 0.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        on-scroll
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>expression</code>
+      </td>
+      <td>
+        <p>Expression to evaluate when the content is scrolled.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        on-scroll-complete
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>expression</code>
+      </td>
+      <td>
+        <p>Expression to evaluate when a scroll action completes. Has access to &#39;scrollLeft&#39; and &#39;scrollTop&#39; locals.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        has-bouncing
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>Whether to allow scrolling to bounce past the edges
+of the content.  Defaults to true on iOS, false on Android.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        scroll-event-interval
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        
+  <code>number</code>
+      </td>
+      <td>
+        <p>Number of milliseconds between each firing of the &#39;on-scroll&#39; expression. Default 10.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+        </div>
+
+         
+         
+         
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

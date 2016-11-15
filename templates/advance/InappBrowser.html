@@ -1,0 +1,50 @@
+<ion-view view-title="Ionic - In App Browser">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         
+         <p>This plugin is used to open external links from your app inside a web browser view. </p>
+<hr><h4>Using Browser</h4>
+<p>It is very easy to start working with this plugin. All you need to do is to open command prompt window and install the Cordova plugin.</p>
+<pre class="result notranslate">
+C:\Users\Username\Desktop\MyApp>cordova plugin add org.apache.cordova.inappbrowser
+</pre>
+<p>This step allows us to start using the <b>inAppBrowser</b>. We can now create button that will lead us to some external link, and add simple function for triggering the plugin.</p>
+<h3>HTML Code</h3>
+<pre class="prettyprint notranslate">
+&lt;button class = "button" ng-click = "openBrowser()"&gt;OPEN BROWSER&lt;/button&gt;
+</pre>
+<h3>Controller Code</h3>
+<pre class="prettyprint notranslate">
+.controller('MyCtrl', function($scope, $cordovaInAppBrowser) {
+
+   var options = {
+      location: 'yes',
+      clearcache: 'yes',
+      toolbar: 'no'
+   };
+
+   $scope.openBrowser = function() {
+      $cordovaInAppBrowser.open('http://ngcordova.com', '_blank', options)
+		
+      .then(function(event) {
+         // success
+      })
+		
+      .catch(function(event) {
+         // error
+      });
+   }
+
+})
+</pre>
+<p>When user tap the button the InAppBrowser will open the URL we provided.</p>
+<p>There are other methods that can be used with this plugin. We will show it in the table below.</p>
+
+             
+         
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

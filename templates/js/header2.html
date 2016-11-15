@@ -1,0 +1,55 @@
+<ion-view view-title="Ionic - JS Header">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p>This is Ionic directive that will add header bar.</p>
+<hr><h4>Using JavaScript Header</h4>
+<p>To create JavaScript header bar we need to apply <b>ion-header-bar</b> directive in HTML file. Since default header is white we will add <b>title</b> so it will be showed on white background. We will add it to our <b>index.html</b> file.</p>
+<pre class="prettyprint notranslate">
+ &lt;ion-header-bar&gt;
+     &lt;h1 class="title"&gt;Title!&lt;/h1&gt;
+ &lt;/ion-header-bar&gt;
+</pre><hr>
+<hr><h4>Styling header</h4>
+<p>Just like CSS header bar, the JavaScript counterpart can be styled in similar fashion. To apply color we need to add color class with <b>bar</b> prefix, so if we want to use blue header we will add <b>bar-positive</b> class. We can also move title to the side of the screen by adding <b>align-title</b> attribute. The values for this attribute can be <b>center</b>, <b>left</b> or <b>right</b>.</p>
+<pre class="prettyprint notranslate">
+&lt;ion-header-bar align-title="left" class="bar-positive"&gt;
+  &lt;h1 class="title"&gt;Title!&lt;/h1&gt;
+&lt;/ion-header-bar&gt;
+</pre>
+         <hr>
+<hr><h4>Adding Elements</h4>
+<p> You will usually want to add some elements to your header. Following example shows how to place <b>button</b> on the left side and <b>icon</b> to the right side of ion-header-bar. You can also add other elements to your header.</p>
+<pre class="prettyprint notranslate">
+&lt;ion-header-bar class="bar-positive"&gt;
+  &lt;div class="buttons"&gt;
+      &lt;button class="button"&gt;Button&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;h1 class="title"&gt;Title!&lt;/h1&gt;
+  &lt;div class="buttons"&gt;
+      &lt;button class="button icon ion-home"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/ion-header-bar&gt;
+</pre><hr>
+<hr><h4>Adding Sub Header</h4>
+<p>Sub header is created when <b>bar-subheader</b> class is added to <b>ion-header-bar</b>. We will add <b>bar-assertive</b> class to apply red color to our sub header.</p>
+<pre class="prettyprint notranslate">
+&lt;ion-header-bar class="bar-positive"&gt;
+  &lt;div class="buttons"&gt;
+      &lt;button class="button"&gt;Button&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;h1 class="title"&gt;Title!&lt;/h1&gt;
+  &lt;div class="buttons"&gt;
+      &lt;button class="button icon ion-home"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/ion-header-bar&gt;
+
+&lt;ion-header-bar class="bar-subheader bar-assertive"&gt;
+  &lt;h1 class="title"&gt;Subheader&lt;/h1&gt;
+&lt;/ion-header-bar&gt;
+</pre><hr>
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

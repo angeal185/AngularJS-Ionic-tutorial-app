@@ -1,0 +1,178 @@
+<ion-view view-title="Ionic - Toggle">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize">
+         
+         <hr />
+<p>Sometimes there are two options available for users to choose from. The most efficient way to handle this situations are toggle forms. Ionic gives us classes for toggle elements that are animated and easy to implement.</p>
+
+<hr><h4>Using Toggle</h4>
+
+<p>Toggle can be implemented using two Ionic classes. First we need to create <b>label</b> for the same reason we explained in last tutorial and assign <b>toggle</b> class to it. Inside our label will be created <b><input type="checkbox"></b>. You will notice two more ionic classes used in the example below. <b>track</b> class will add background styling to our checkbox and color animation when toggle is tapped. <b>handle</b> class is used to add circle button to it.</p>
+<p>This example shows two toggle forms. The first one is checked, the second one isn't.</p>
+
+<pre class="prettyprint notranslate">
+ &lt;label class="toggle"&gt;
+     &lt;input type="checkbox"&gt;
+     &lt;div class="track"&gt;
+         &lt;div class="handle"&gt;&lt;/div&gt;
+     &lt;/div&gt;
+ &lt;/label&gt;
+
+&lt;br&gt;
+
+ &lt;label class="toggle"&gt;
+     &lt;input type="checkbox"&gt;
+     &lt;div class="track"&gt;
+         &lt;div class="handle"&gt;&lt;/div&gt;
+     &lt;/div&gt;
+ &lt;/label&gt;
+</pre>
+<hr><h4>Multiple Toggles</h4>
+<p>Most of the time when you want to add more then one element of the same kind in Ionic, the best way is to use list items. The class that is used for multiple toggles is <b>item-toggle</b>. The next example showes how to create list with for toggles. First one and the second one are checked.</p>
+<pre class="prettyprint notranslate">
+ &lt;ul class="list"&gt;
+
+     &lt;li class="item item-toggle"&gt;
+         Toggle 1
+         &lt;label class="toggle"&gt;
+             &lt;input type="checkbox"&gt;
+             &lt;div class="track"&gt;
+                 &lt;div class="handle"&gt;&lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/label&gt;
+     &lt;/li&gt;
+
+     &lt;li class="item item-toggle"&gt;
+         Toggle 2
+         &lt;label class="toggle"&gt;
+             &lt;input type="checkbox"&gt;
+             &lt;div class="track"&gt;
+                 &lt;div class="handle"&gt;&lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/label&gt;
+     &lt;/li&gt;
+
+     &lt;li class="item item-toggle"&gt;
+         Toggle 3
+         &lt;label class="toggle"&gt;
+             &lt;input type="checkbox"&gt;
+             &lt;div class="track"&gt;
+                 &lt;div class="handle"&gt;&lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/label&gt;
+     &lt;/li&gt;
+
+     &lt;li class="item item-toggle"&gt;
+         Toggle 4
+         &lt;label class="toggle"&gt;
+             &lt;input type="checkbox"&gt;
+             &lt;div class="track"&gt;
+                 &lt;div class="handle"&gt;&lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/label&gt;
+     &lt;/li&gt;
+     
+ &lt;/ul&gt;
+</pre>
+<hr><h4>Styling Toggle</h4>
+<p>All Ionic color classes can be applyed to toggle element. Prefix will be <b>toggle</b>. We will apply this to <b>label</b> element. below example shows all the colors applied.</p>
+<pre class="prettyprint notranslate">
+ &lt;ul class="list"&gt;
+
+     &lt;li class="item item-toggle"&gt;
+         Toggle Light
+         &lt;label class="toggle  toggle-light"&gt;
+             &lt;input type="checkbox"&gt;
+             &lt;div class="track"&gt;
+                 &lt;div class="handle"&gt;&lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/label&gt;
+     &lt;/li&gt;
+
+     &lt;li class="item item-toggle"&gt;
+         Toggle Stable
+         &lt;label class="toggle toggle-stable"&gt;
+             &lt;input type="checkbox"&gt;
+             &lt;div class="track"&gt;
+                 &lt;div class="handle"&gt;&lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/label&gt;
+     &lt;/li&gt;
+
+     &lt;li class="item item-toggle"&gt;
+         Toggle Positiv&gt;
+         &lt;label class="toggle toggle-positive"&gt;
+             &lt;input type="checkbox"&gt;
+             &lt;div class="track"&gt;
+                 &lt;div class="handle"&gt;&lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/label&gt;
+     &lt;/li&gt;
+
+     &lt;li class="item item-toggle"&gt;
+         Toggle Calm
+         &lt;label class="toggle toggle-calm"&gt;
+             &lt;input type="checkbox"&gt;
+             &lt;div class="track"&gt;
+                 &lt;div class="handle"&gt;&lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/label&gt;
+     &lt;/li&gt;
+
+     &lt;li class="item item-toggle"&gt;
+         Toggle Balanced
+         &lt;label class="toggle toggle-balanced"&gt;
+             &lt;input type="checkbox"&gt;
+             &lt;div class="track"&gt;
+                 &lt;div class="handle"&gt;&lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/label&gt;
+     &lt;/li&gt;
+
+     &lt;li class="item item-toggle"&gt;
+         Toggle Energized
+         &lt;label class="toggle toggle-energized"&gt;
+             &lt;input type="checkbox"&gt;
+             &lt;div class="track"&gt;
+                 &lt;div class="handle"&gt;&lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/label&gt;
+     &lt;/li&gt;
+
+     &lt;li class="item item-toggle"&gt;
+         Toggle Assertive
+         &lt;label class="toggle toggle-assertive"&gt;
+             &lt;input type="checkbox"&gt;
+             &lt;div class="track"&gt;
+                 &lt;div class="handle"&gt;&lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/label&gt;
+     &lt;/li&gt;
+
+     &lt;li class="item item-toggle"&gt;
+         Toggle Royal
+         &lt;label class="toggle  toggle-royal"&gt;
+             &lt;input type="checkbox"&gt;
+             &lt;div class="track"&gt;
+                 &lt;div class="handle"&gt;&lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/label&gt;
+     &lt;/li&gt;
+
+     &lt;li class="item item-toggle"&gt;
+         Toggle Dark
+         &lt;label class="toggle toggle-dark"&gt;
+             &lt;input type="checkbox"&gt;
+             &lt;div class="track"&gt;
+                 &lt;div class="handle"&gt;&lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/label&gt;
+     &lt;/li&gt;
+ 
+ &lt;/ul&gt;
+</pre>
+<hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

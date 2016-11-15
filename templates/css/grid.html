@@ -1,0 +1,154 @@
+<ion-view view-title="Ionic - Grid">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+    <div class="IOimgsize">
+        <hr />
+<p>Working with the Ionic grid system is straightforward. There are two main classes <b>row</b> for working with rows and <b>col</b> for columns.</p>
+<p>You can choose as much as columns or rows you want. All of them will adjust its size to accommodate available space, although you can change this behaviour to suit your needs.</p>
+<p><b>NOTE</b> &minus; All examples in this tutorial will have borders applied to our grid to be able to display it in a way that is easy to understand.</p>
+<hr><h4>Simple Grid</h4>
+<p>Example below shows how to use <b>col</b> and <b>row</b> classes. We will create two rows. First row will have five columns, and the second one will have only three. Notice how width of columns is different in first and second row.</p>
+<pre class="prettyprint notranslate">
+&lt;div class = "row"&gt;
+   &lt;div class = "col"&gt;col 1&lt;/div&gt;
+   &lt;div class = "col"&gt;col 2&lt;/div&gt;
+   &lt;div class = "col"&gt;col 3&lt;/div&gt;
+   &lt;div class = "col"&gt;col 4&lt;/div&gt;
+   &lt;div class = "col"&gt;col 5&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class = "row"&gt;
+   &lt;div class = "col"&gt;col 1&lt;/div&gt;
+   &lt;div class = "col"&gt;col 2&lt;/div&gt;
+   &lt;div class = "col"&gt;col 3&lt;/div&gt;
+ &lt;/div&gt;
+</pre>
+<hr><h4>Column Sizes</h4>
+<p>Sometimes you don't want to leave column sizes automatically assigned. If this is the case you can choose <b>col</b> prefix followed by a number that will represent a percentage of the row width. This will apply only to the column with specific size applied. The other columns will adjust to the available space that is left.</p>
+<p>In the example below first column will use 50 percent of the full width and the others will adjust accordingly.</p>
+<pre class="prettyprint notranslate">
+&lt;div class = "row"&gt;
+   &lt;div class = "col col-50"&gt;col 1&lt;/div&gt;
+   &lt;div class = "col"&gt;col 2&lt;/div&gt;
+   &lt;div class = "col"&gt;col 3&lt;/div&gt;
+   &lt;div class = "col"&gt;col 4&lt;/div&gt;
+   &lt;div class = "col"&gt;col 5&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class = "row"&gt;
+   &lt;div class = "col col-50"&gt;col 1&lt;/div&gt;
+   &lt;div class = "col"&gt;col 2&lt;/div&gt;
+   &lt;div class = "col"&gt;col 3&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<p>Following table shows available percentage options that Ionic grid system provides &minus;</p>
+<hr><h4>Column Percentage Classnames</h4>
+<table class="table table-bordered">
+<tbody>
+<tr>
+<th>
+Class Name
+</th>
+<th>
+Percentage Used
+</th>         
+</tr>
+<tr>
+<th>col-10</th>
+<td>10%</td>
+</tr>
+<tr>
+<th>col-20</th>
+<td>20%</td>
+</tr>
+<tr>
+<th>col-25</th>
+<td>25%</td>
+</tr>
+<tr>
+<th>col-33</th>
+<td>33.3333%</td>
+</tr>
+<tr>
+<th>col-50</th>
+<td>50%</td>
+</tr>
+<tr>
+<th>col-67</th>
+<td>66.6666%</td>
+</tr>
+<tr>
+<th>col-75</th>
+<td>75%</td>
+</tr>
+<tr>
+<th>col-80</th>
+<td>80%</td>
+</tr>
+<tr>
+<th>col-90</th>
+<td>90%</td>
+</tr>
+</tbody>
+</table>
+<hr><h4>Horizontal and Vertical Positioning</h4>
+<p>The columns can be offset from the left. It works the same as the specific size of the columns. This time prefix will be <b>col-offset</b> and then we will use the same percentage numbers showed in the table above. Following example shows how can we offset second column of both rows by 25 percent.</p>
+<pre class="prettyprint notranslate">
+&lt;div class = "row"&gt;
+   &lt;div class = "col"&gt;col 1&lt;/div&gt;
+   &lt;div class = "col col-offset-25"&gt;col 2&lt;/div&gt;
+   &lt;div class = "col"&gt;col 3&lt;/div&gt;
+   &lt;div class = "col"&gt;col 4&lt;/div&gt;
+   &lt;div class = "col"&gt;col 5&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class = "row"&gt;
+   &lt;div class = "col"&gt;col 1&lt;/div&gt;
+   &lt;div class = "col col-offset-25"&gt;col 2&lt;/div&gt;
+   &lt;div class = "col"&gt;col 3&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<p>You can also vertically align columns inside a row. There are three classes that can be used: <b>top</b>, <b>center</b> and <b>bottom</b> class with <b>col</b> prefix. Code belows shows how to place vertically first three columns of both rows.</p>
+<p><b>NOTE</b> &minus; In the example that follows we added <b>.col {height: 120px}</b> to our CSS to show you columns vertical placing.</p>
+<pre class="prettyprint notranslate">
+&lt;div class = "row"&gt;
+   &lt;div class = "col col-top"&gt;col 1&lt;/div&gt;
+   &lt;div class = "col col-center"&gt;col 2&lt;/div&gt;
+   &lt;div class = "col col-bottom"&gt;col 3&lt;/div&gt;
+   &lt;div class = "col"&gt;col 4&lt;/div&gt;
+   &lt;div class = "col"&gt;col 5&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class = "row"&gt;
+   &lt;div class = "col col-top"&gt;col 1&lt;/div&gt;
+   &lt;div class = "col col-center"&gt;col 2&lt;/div&gt;
+   &lt;div class = "col col-bottom"&gt;col 3&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+        <hr>
+<hr><h4>Responsive Grid</h4>
+<p>Ionic grid can also be used for responsive layout. There are three classes available. <b>responsive-sm</b> class will collapse columns into single row when the viewport is smaller than landscape phone. <b>responsive-md</b> class will be applied when viewport is smaller than portrait tablet. <b>responsive-lg</b> class will be applied when viewport is smaller than landscape tablet.</p>
+<p>First image after following example shows how <b>responsive-sm</b> class looks on mobile device and second one shows how the same responsive grid looks differently on Tablet device.</p>
+<pre class="prettyprint notranslate">
+&lt;div class = "row responsive-sm"&gt;
+   &lt;div class = "col col-25"&gt;col 1&lt;/div&gt;
+   &lt;div class = "col"&gt;col 2&lt;/div&gt;
+   &lt;div class = "col"&gt;col 3&lt;/div&gt;
+   &lt;div class = "col"&gt;col 4&lt;/div&gt;
+   &lt;div class = "col"&gt;col 5&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class = "row responsive-sm"&gt;
+   &lt;div class = "col"&gt;col 1&lt;/div&gt;
+   &lt;div class = "col"&gt;col 2&lt;/div&gt;
+   &lt;div class = "col"&gt;col 3&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<hr />
+
+        
+      </div>
+      
+      
+      <br><br>
+  </ion-content>
+</ion-view>

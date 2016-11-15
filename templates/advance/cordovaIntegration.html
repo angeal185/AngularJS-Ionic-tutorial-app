@@ -1,0 +1,36 @@
+<ion-view view-title="Ionic - Cordova Integration">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p>Cordova offers <b>ngCordova</b> which is set of wrappers specifically designed to work with AngularJS.</p>
+<hr><h4>Installing ngCordova</h4>
+<p>When you start Ionic app you will notice that it is using <b>bower</b>. It can be used for managing ngCordova plugins. If you have bower installed skip this step, if you don't then you can install it in command prompt window.</p>
+<pre class="result notranslate">
+C:\Users\Username\Desktop\MyApp> npm install -g bower
+</pre>
+<p>Now we need to install <b>ngCordova</b>. Open your app in command prompt window. Example below is used for the app that is located on desktop and named <b>MyApp</b></p>
+<pre class="result notranslate">
+C:\Users\Username\Desktop\MyApp> bower install ngCordova
+</pre>
+<p>Next we need to include ngCordova to our app. Open <b>index.html</b> file and add the following scripts. It is important to add these scripts before <b>cordova.js</b> and after <b>ionic</b> scripts.</p>
+<pre class="prettyprint notranslate">
+&lt;script src = "lib/ngCordova/dist/ng-cordova.js"&gt;&lt;/script&gt;
+</pre>
+<p>Now we need to inject ngCordova as angular dependency. Open your <b>app.js</b> file and add the ngCordova to angular module. If you used one of the Ionic template apps, you will notice that there are already injected ionic, controllers and services. In that case you will just add ngCordova at the and of array.</p>
+<pre class="result notranslate">
+angular.module('myApp', ['ngCordova'])
+</pre>
+<p>You can always check the plugins that are already installed by typing &minus;</p>
+<pre class="result notranslate">
+C:\Users\Username\Desktop\MyApp> cordova plugins ls
+</pre>
+<p>Now we can use  Cordova plugins. In our next tutorials we will show you how to use some of the most popular plugins. You can check all of the plugins <a rel="nofollow" target="_blank" href="http://ngcordova.com/docs/plugins/">here</a>.</p>
+
+         
+             
+         
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,61 @@
+<ion-view view-title="Ionic - Cards">
+  <ion-content overflow-scroll="true" padding="true" class="has-header"><div class="IOimgsize">
+    <hr />
+<p>Since mobile devices have smaller screen size, cards are one of the best elements for displaying information that will feel user friendly. In our last tutorial we showed you inset lists. Cards are very similiar to inset lists but they offer some additional shadowing that can influence performance for larger lists.</p>
+
+<hr><h4>Adding Cards</h4>
+
+<p>Default card can be created by adding <b>card</b> class to your element. Cards are usually formed as lists with <b>item</b> class. Usefull class is <b>item-text-wrap</b>. This will help when you have too much text so you want to wrap it inside your card. First card in example below doesn't have <b>item-text-wrap</b> class assigned and the second one is using it.</p>
+
+<pre class="prettyprint notranslate">
+&lt;div class="card"&gt;
+   &lt;div class="item"&gt;
+      This is a Ionic card without item-text-wrap class.
+   &lt;/div&gt;
+   
+   &lt;div class="item item-text-wrap"&gt;
+      This is a Ionic card with item-text-wrap class.
+   &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+
+
+<hr><h4>Card Header and Footer</h4>
+<p>We already showed you how you can use <b>item-divider</b> class for grouping lists. This class can be very usefull when working with cards to create card headers. The same class can be used for footers as follows:</p>
+
+<pre class="prettyprint notranslate">
+&lt;div class="card list"&gt;
+   &lt;div class="item item-divider"&gt;
+      Card header
+   &lt;/div&gt;
+   
+   &lt;div class="item item-text-wrap"&gt;
+      Card text...
+   &lt;/div&gt;
+   
+   &lt;div class="item item-divider"&gt;
+      Card Footer
+   &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<hr><h4>Complete Card</h4>
+<p>You can add any element on top of your card. In following example we will show you how to use <b>full-image</b> class together with <b>item-body</b> to get good looking windowed image inside your card.</p>
+<pre class="prettyprint notranslate">
+&lt;div class="card"&gt;
+   &lt;div class="item item-avatar"&gt;
+      &lt;img src="my-image.png"&gt;
+      &lt;h4&gt;Card Name&lt;/h4&gt;
+   &lt;/div&gt;
+
+   &lt;div class="item item-body"&gt;
+      &lt;img class="full-image" src="my-image.png"&gt;
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget pharetra tortor. Proin quis eros imperdiet, facilisis nisi in, tincidunt orci. Nam tristique elit massa, quis faucibus augue finibus ac.
+&lt;/div&gt;
+</pre>
+<hr />
+      </div>
+      
+      <br><br>
+  </ion-content>
+</ion-view>

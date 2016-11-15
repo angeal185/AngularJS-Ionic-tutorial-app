@@ -1,0 +1,98 @@
+<ion-view view-title="Ionic - JS Events">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p>There are various Ionic events that can be used to add interactivity with users. Following table explains all Ionic events.</p>
+<table class="table table-bordered">
+<tbody>
+<tr>
+<th style="width:160px;">
+Event Name
+</th>
+<th>
+Event Detail
+</th>         
+</tr>
+<tr>
+<th>on-hold</th>
+<td>Called when duration of the touch is more than 500ms.</td>
+</tr>
+<tr>
+<th>on-tap</th>
+<td>Called when duration of the touch is less than 250ms.</td>
+</tr>
+<tr>
+<th>on-double-tap</th>
+<td>Called when there is double tap touch.</td>
+</tr>
+<tr>
+<th>on-touch</th>
+<td>Called immediately when touch begins.</td>
+</tr>
+<tr>
+<th>on-release</th>
+<td>Called when touch ends.</td>
+</tr>
+<tr>
+<th>on-drag</th>
+<td>Called when touch is moved without releasing around the page in any direction.</td>
+</tr>
+<tr>
+<th>on-drag-up</th>
+<td>Called when element is dragged up.</td>
+</tr>
+<tr>
+<th>on-drag-right</th>
+<td>Called when the element is dragged to the right.</td>
+</tr>
+<tr>
+<th>on-drag-left</th>
+<td>Called when the element is dragged to the left.</td>
+</tr>
+<tr>
+<th>on-drag-down</th>
+<td>Called when the element is dragged down.</td>
+</tr>
+<tr>
+<th>on-swipe</th>
+<td>Called when any dragging has high velocity moving in any direction.</td>
+</tr>
+<tr>
+<th>on-swipe-up</th>
+<td>Called when any dragging has high velocity moving up.</td>
+</tr>
+<tr>
+<th>on-swipe-right</th>
+<td>Called when any dragging has high velocity moving to the right.</td>
+</tr>
+<tr>
+<th>on-swipe-left</th>
+<td>Called when any dragging has high velocity moving to the left.</td>
+</tr>
+<tr>
+<th>on-swipe-down</th>
+<td>Called when any dragging has high velocity moving down.</td>
+</tr>
+</tbody>
+</table>
+         <hr>
+<h4>Using Events</h4>
+<p>Since all Ionic events can be used the same way we will show you how to use <b>on-touch</b> event and you can just apply the same principles to the other events. First we will create button and assign <b>on-touch</b> event that will call <b>onTouchFunction()</b>.</p>
+<pre class="prettyprint notranslate">
+&lt;button on-touch = "onTouchFunction()" class="button"&gt;Test&lt;/button&gt;
+</pre>
+<p>Then we will create that function in our controller scope.</p>
+<pre class="prettyprint notranslate">
+$scope.onTouchFunction = function() {
+   // Do something...
+}
+</pre>
+<p>Now when touch event occurs <b>onTouchFunction()</b> will be called.</p>
+
+         
+         
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

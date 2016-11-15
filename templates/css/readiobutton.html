@@ -1,0 +1,103 @@
+<ion-view view-title="Ionic - Radio Buttons">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+    <div class="IOimgsize">
+        
+        <hr />
+<p><b>Radio buttons</b> are another form elements that we will be covering. The difference between radio buttons from toggle and checkbox forms is that when using former you choose only one radio button from the list. The later allows you to choose more then one.
+</p>
+
+<hr><h4>Adding Radio Buttons</h4>
+
+<p>Since there will always be more then one radio button to choose from, the best way is to create list. We did this whenever we wanted multiple elements. The list item class will be <b>item-radio</b>. Again we will use <b>label</b> for this as with all the other forms. Input will have <b>name</b> attribute. This attribute will group all the buttons that you want to use as possible choice. This can be any name you want. <b>item-content</b> class is used to display options clearly. At the end we will use <b>radio-icon</b> class to add checkmark icon that will be used to mark option that user choosed.</p>
+<p>In our example below there are four radio buttons, and the second one is chosen.</p>
+
+<pre class="prettyprint notranslate">
+&lt;div class="list"&gt;
+
+   &lt;label class="item item-radio"&gt;
+      &lt;input type="radio" name="group1"&gt;
+      &lt;div class="item-content"&gt;
+         Choice 1
+      &lt;/div&gt;
+      &lt;i class="radio-icon ion-checkmark"&gt;&lt;/i&gt;
+   &lt;/label&gt;
+
+   &lt;label class="item item-radio"&gt;
+      &lt;input type="radio" name="group1"&gt;
+      &lt;div class="item-content"&gt;
+         Choice 2
+      &lt;/div&gt;
+      &lt;i class="radio-icon ion-checkmark"&gt;&lt;/i&gt;
+   &lt;/label&gt;
+
+   &lt;label class="item item-radio"&gt;
+      &lt;input type="radio" name="group1"&gt;
+      &lt;div class="item-content"&gt;
+         Choice 3
+      &lt;/div&gt;
+      &lt;i class="radio-icon ion-checkmark"&gt;&lt;/i&gt;
+   &lt;/label&gt;
+
+   &lt;label class="item item-radio"&gt;
+      &lt;input type="radio" name="group1"&gt;
+      &lt;div class="item-content"&gt;
+         Choice 4
+      &lt;/div&gt;
+      &lt;i class="radio-icon ion-checkmark"&gt;&lt;/i&gt;
+   &lt;/label&gt;
+
+&lt;/div&gt;
+</pre>
+<hr><h4>Multiple Radio Button Groups</h4>
+<p>Sometimes you want to create more then one group to choose from. This is what the <b>name</b> attribute is for. Next example will group first two and the last two buttons as two option gropups.</p>
+<p>We will use <b>item-divider</b> class to separate two groups. Notice that the first group has <b>name</b> attribute equal to <b>group1</b> and the secon one use <b>group2</b>.</p>
+
+<pre class="prettyprint notranslate">
+&lt;div class="list"&gt;
+   &lt;div class=" item item-divider"&gt;
+      Group1
+   &lt;/div&gt;
+
+   &lt;label class="item item-radio"&gt;
+      &lt;input type="radio" name="group1"&gt;
+      &lt;div class="item-content"&gt;
+         Choice 1
+      &lt;/div&gt;
+      &lt;i class="radio-icon ion-checkmark"&gt;&lt;/i&gt;
+   &lt;/label&gt;
+
+   &lt;label class="item item-radio"&gt;
+      &lt;input type="radio" name="group1"&gt;
+      &lt;div class="item-content"&gt;
+         Choice 2
+      &lt;/div&gt;
+      &lt;i class="radio-icon ion-checkmark"&gt;&lt;/i&gt;
+   &lt;/label&gt;
+
+   &lt;div class=" item item-divider"&gt;
+      Group2
+   &lt;/div&gt;
+
+   &lt;label class="item item-radio"&gt;
+      &lt;input type="radio" name="group2"&gt;
+      &lt;div class="item-content"&gt;
+         Choice 3
+      &lt;/div&gt;
+      &lt;i class="radio-icon ion-checkmark"&gt;&lt;/i&gt;
+   &lt;/label&gt;
+
+   &lt;label class="item item-radio"&gt;
+      &lt;input type="radio" name="group2"&gt;
+      &lt;div class="item-content"&gt;
+         Choice 4
+      &lt;/div&gt;
+      &lt;i class="radio-icon ion-checkmark"&gt;&lt;/i&gt;
+   &lt;/label&gt;
+
+&lt;/div&gt;
+</pre>
+<hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,94 @@
+<ion-view view-title="Ionic - Buttons">
+  <ion-content overflow-scroll="true" padding="true" class="has-header"><div class="IOimgsize">
+    <hr />
+<p>There are several types of buttons in Ionic Framework and  all of the buttons are subtly animated which enhances user experience when using your app. Main class for all button types is <b>button</b>. This class will always be applied to our buttons, and we will also use it as prefix when working with sub classes.</p>
+
+<hr><h4>Block Buttons</h4>
+<p>Block buttons will always have 100% width of their parent container. They will also have small padding applied. You will use <b>button-block</b> class for adding block buttons. If you want to remove padding but keep full width, you can use <b>button-full</b> class.</p>
+<p>Following is the example to show the usage of both classes:</p>
+<pre class="prettyprint notranslate">
+&lt;button class="button button-block"&gt;
+   button-block
+&lt;/button&gt;
+
+&lt;button class="button button-full"&gt;
+   button-full
+&lt;/button&gt;
+</pre>
+<hr><h4>Button Size</h4>
+<p>There are two Ionic classes for changing button size: <b>button-small</b> and <b>button-large</b>. Following is the example to show the usage:</p>
+
+<pre class="prettyprint notranslate">
+&lt;button class="button button-small"&gt;
+   button-small
+&lt;/button&gt;
+
+&lt;button class="button button-large"&gt;
+   button-large
+&lt;/button&gt;
+</pre>
+<hr><h4>Button Colors</h4>
+<p>If you want to style your button you just need to add appropriate color class to it. When you style your elements you need to add your main element class as prefix to your color class. Since we are styling footer bar, the prefix class will be <b>bar</b> and color class that we want to use in this example is <b>assertive</b> (red).</p>
+<pre class="prettyprint notranslate">
+&lt;button class="button button-assertive"&gt;
+   button-assertive
+&lt;/button&gt;
+</pre>
+<p>You can use either of the following nine classes to give a color of your choice to your app buttons:</p>
+<table class="src">
+<tr><th>Color Class</th><th>Description</th><th>Result</th></tr>
+<tr><th>button-light</th><td>To be used for white color</td><td style="background:#ffffff">&nbsp;</td></tr>
+<tr><th>button-stable</th><td>To be used for light grey color</td><td style="background:#eeee">&nbsp;</td></tr>
+<tr><th>button-positive</th> <td>To be used for blue color</td><td style="background:#387ef5">&nbsp;</td></tr>
+<tr><th>button-calm</th><td>To be used for light blue color</td><td style="background:#11c1f3">&nbsp;</td></tr>
+<tr><th>button-balanced</th> <td>To be used for green color</td><td style="background:#33cd5f">&nbsp;</td></tr>
+<tr><th>button-energized</th><td>To be used for yellow color</td><td style="background:#ffc900">&nbsp;</td></tr>
+<tr><th>button-assertive</th><td>To be used for red color</td><td style="background:#ef473a">&nbsp;</td></tr>
+<tr><th>button-royal</th><td>To be used for violet color</td><td style="background:#886aea">&nbsp;</td></tr>
+<tr><th>button-dark</th><td>To be used for black color</td><td style="background:#444444">&nbsp;</td></tr>
+</table>
+
+<hr><h4>Button Outline</h4>
+<p>If you want your buttons transparent you can apply <b>button-outline</b> class. Buttons with this class will have outline border and transparent background.</p>
+<p>To remove border from button you can use <b>button-clear</b> class. The example below shows how to use these two classes.</p>
+<pre class="prettyprint notranslate">
+&lt;button class="button button-assertive button-outline"&gt;
+   button-outline
+&lt;/button&gt;
+
+&lt;button class="button button-assertive button-clear"&gt;
+   button-clear
+&lt;/button&gt;
+</pre>
+<hr><h4>Adding Icons</h4>
+<p>When you want to add Icons to your buttons, the best way is to use <b>icon</b> class. You can place icon on one side of the button by using <b>icon-left</b> or <b>icon-right</b>. You will usually want to move your icon to one side when you have some text on top of your button as showed below.</p>
+<pre class="prettyprint notranslate">
+&lt;button class="button icon ion-home"&gt;
+&lt;/button&gt;
+
+&lt;button class="button icon icon-left ion-home"&gt;
+   Home
+&lt;/button&gt;
+
+&lt;button class="button icon icon-right ion-home"&gt;
+   Home
+&lt;/button&gt;
+</pre>
+<hr><h4>Button Bar</h4>
+<p>If you want to group couple of buttons together you can use <b>button-bar</b> class. The buttons will have equal size by default.</p>
+
+<pre class="prettyprint notranslate">
+&lt;div class="button-bar"&gt;
+   &lt;a class="button button-positive"&gt;1&lt;/a&gt;
+   &lt;a class="button button-assertive"&gt;2&lt;/a&gt;
+   &lt;a class="button button-energized"&gt;3&lt;/a&gt;
+   &lt;a class="button"&gt;4&lt;/a&gt;
+&lt;/div&gt; 
+</pre>
+<hr />
+</div>
+
+      
+      <br><br>
+  </ion-content>
+</ion-view>

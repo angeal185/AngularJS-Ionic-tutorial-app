@@ -1,0 +1,76 @@
+<ion-view view-title="Ionic - Color">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+      <hr />
+   <p>Before we start with actual elements avilable in Ionic framework, let's have a little understanding on how Ionic makes use of colors for different elements.</p>
+<p>Ionic framework gives us set of nine predefined color classes. You can use these colors or you can override it with your own styling.</p>
+<p>Following list shows default set of 9 colors provided by Ionic. We will use these colors for styling different Ionic elements in our next tutorials. For now you can check all the colors below:</p>
+      <hr />
+<h4>Ionic Color Classes</h4>
+<table class="src">
+<tr><th>Class</th><th>Description</th><th>Result</th></tr>
+<tr><th>light</th><td>To be used for white color</td><td style="background:#ffffff">&nbsp;</td></tr>
+<tr><th>stable</th><td>To be used for light grey color</td><td style="background:#eeee">&nbsp;</td></tr>
+<tr><th>positive</th> <td>To be used for blue color</td><td style="background:#387ef5">&nbsp;</td></tr>
+<tr><th>calm</th><td>To be used for light blue color</td><td style="background:#11c1f3">&nbsp;</td></tr>
+<tr><th>balanced</th> <td>To be used for green color</td><td style="background:#33cd5f">&nbsp;</td></tr>
+<tr><th>energized</th><td>To be used for yellow color</td><td style="background:#ffc900">&nbsp;</td></tr>
+<tr><th>assertive</th><td>To be used for red color</td><td style="background:#ef473a">&nbsp;</td></tr>
+<tr><th>royal</th><td>To be used for violet color</td><td style="background:#886aea">&nbsp;</td></tr>
+<tr><th>dark</th><td>To be used for black color</td><td style="background:#444444">&nbsp;</td></tr>
+</table>
+      <hr />
+<h4>Ionic Color Usage</h4>
+<p>Ionic makes use of different classes for each element. For example a header element will have <b>bar</b> class and a button will have <b>button</b> class. To simplify the usage, we use different colors by prefixing element class in a color name.</p>
+<p>For example to create a blue color header we will use a <b>bar-calm</b> as follows:</p>
+<pre class="result notranslate">
+&lt;div class="bar bar-header bar-calm"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+<p>Similarly to create a grey color button we will use <b>button-stable</b> class as follows.</p>
+<pre class="result notranslate">
+&lt;div class="button button-stable"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+<p>You can also use Ionic color class like any other CSS class. We will style two paragraphs below with <code>balanced</code> (green) and <code>energized</code> (yellow) color.</p>
+<pre class="result notranslate">
+&lt;p class="balanced"&gt;Paragraph 1...&lt;/p&gt;
+&lt;p class="energized"&gt;Paragraph 2...&lt;/p&gt;
+</pre>
+<p>You will see the detail in coming chapters when we will create different elements using different classes.</p>
+<hr />
+<h4>Customizing Colors with CSS</h4>
+<p>When you want to change some of the Ionic default colors using CSS, you can do it by editing <code>lib/css/ionic.css</code> file. In some cases this approach isn't very productive because every element (header, button, footer...) use its own classes for styling. So if you want to change color of the "light" class to orange, you would need to search through all of the elements that use this class and change it. This is useful when you want to change color of a single element, but not very practical for changing color of all elements because it would use too much time.
+</p>
+<hr />
+<h4>Customizing colors using SASS</h4>
+<p>SASS provides easier way to change color for all elements at once. If you want to use SASS open your project in command window and type:
+</p>
+
+<pre class="result notranslate">
+C:\Users\Username\Desktop\tutorialApp&gt; ionic setup sass
+</pre>
+
+<p>This will set up SASS for your project. Now you can change default colors if you open <code>scss/ionic.app.scss</code> file and type the following before this line <code>@import "www/lib/ionic/scss/ionic";</code>. We will change <code>balanced</code> color to dark blue, and <code>energized</code> color to orange. Two paragraphs we used above are now dark blue and orange.</p>
+
+<pre class="result notranslate">
+$balanced: #000066 !default;
+$energized: #FFA500 !default;
+</pre>
+<p>Now if you use following example:</p>
+<pre class="result notranslate">
+&lt;p class="balanced"&gt;Paragraph 1...&lt;/p&gt;
+&lt;p class="energized"&gt;Paragraph 2...&lt;/p&gt;
+</pre>
+<p>All of the Ionic elements that are using these classes will change to dark blue and orange. Take into consideration that you don't need to use Ionic default colors classes. You can always style elements the way you want.
+</p>
+      <hr />
+<h4>Important Note</h4>
+<p><code>www/css/style.css</code> file will be removed from the header of the <code>index.html</code> after you install SASS. You will need to link it manually if you still want to use it. Open your <code>index.html</code> and add the following code inside the <code>header</code>.</p>
+<pre class="result notranslate">
+&lt;link href="css/style.css" rel="stylesheet"&gt;
+</pre>
+      <br><br>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,57 @@
+<ion-view view-title="Ionic - Geolocation">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         
+         <h4>Using Geolocation</h4>
+<p>There is a simple way to use geolocation plugin. We need to install this plugin from the command prompt window.</p>
+<pre class="result notranslate">
+C:\Users\Username\Desktop\MyApp>cordova plugin add cordova-plugin-geolocation
+</pre>
+<p>The following controller code is using two methods. The first one is <b>getCurrentPosition</b> and it will show us current latitude and longitude of the users device. The second one is <b>watchCurrentPosition</b> that will return current position of the device when position is changed.</p>
+<h4>Controller Code</h4>
+<pre class="prettyprint notranslate">	
+.controller('MyCtrl', function($scope, $cordovaGeolocation) {
+   var posOptions = {timeout: 10000, enableHighAccuracy: false};
+   $cordovaGeolocation
+   .getCurrentPosition(posOptions)
+	
+   .then(function (position) {
+      var lat  = position.coords.latitude
+      var long = position.coords.longitude
+      console.log(lat + '   ' + long)
+   }, function(err) {
+      console.log(err)
+   });
+
+   var watchOptions = {timeout : 3000, enableHighAccuracy: false};
+   var watch = $cordovaGeolocation.watchPosition(watchOptions);
+	
+   watch.then(
+      null,
+		
+      function(err) {
+         console.log(err)
+      },
+		
+      function(position) {
+         var lat  = position.coords.latitude
+         var long = position.coords.longitude
+         console.log(lat + '' + long)
+      }
+   );
+
+   watch.clearWatch();
+
+})
+</pre>
+<p>You also noticed <b>posOptions</b> and <b>watchOptions</b> objects. We are using <b>timeout</b> to adjust maximum length of time that is allowed to pass in milliseconds and <b>enableHighAccuracy</b> is set to false. It can be set to <b>true</b> to get the best possible results but sometimes it can lead to some errors. There is also <b>maximumAge</b> option that can be used to show how old position is accepted. It is using milliseconds, the same as timeout option.</p>
+<p>When we start our app and open the console it will log the latitude and longitude of the device. When our position is changed, the <b>lat</b> and <b>long</b> values will change.</p>
+
+             
+         
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

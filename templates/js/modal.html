@@ -1,0 +1,189 @@
+<ion-view view-title="Ionic - JS Modal">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p>When Ionic modal is activated, the content pane will appear on top of the regular content. Modal is basically larger popup with more functionalities. Modal will cover entire screen by default but it can be optimized the way you want.</p>
+         <hr>
+<h4>Using Modal</h4>
+<p>There are a two ways of implementing modal in Ionic. One way is to add separate template and the other is to add it on top of the regular HTML file, inside <b>script</b> tags. First thing we need to do is to connect our modal to our controller using angular dependency injection. Then we need to create modal. We will pass in scope and add animation to our modal.</p>
+<p>After that we are creating functions for opening, closing, destroying modal and the last two functions are place where we can write code that will be triggered if modal is hidden or removed. If you don't want to trigger any functionality when modal is removed or hidden you can delete the last two functions.</p>
+<hr><h4>Controller Code</h4>
+<pre class="prettyprint notranslate">
+.controller('MyController', function($scope, $ionicModal) {
+
+   $ionicModal.fromTemplateUrl('my-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+   }).then(function(modal) {
+      $scope.modal = modal;
+   });
+	
+   $scope.openModal = function() {
+      $scope.modal.show();
+   };
+	
+   $scope.closeModal = function() {
+      $scope.modal.hide();
+   };
+	
+   //Cleanup the modal when we're done with it!
+   $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+   });
+	
+   // Execute action on hide modal
+   $scope.$on('modal.hidden', function() {
+      // Execute action
+   });
+	
+   // Execute action on remove modal
+   $scope.$on('modal.removed', function() {
+      // Execute action
+   });
+
+});
+</pre>
+<hr><h4>HTML Code</h4>
+<pre class="prettyprint notranslate">
+&lt;script id = "my-modal.html" type = "text/ng-template"&gt;
+   &lt;ion-modal-view&gt;
+      &lt;ion-header-bar&gt;
+         &lt;h1 class = "title"&gt;Modal Title&lt;/h1&gt;
+      &lt;/ion-header-bar&gt;
+		
+      &lt;ion-content&gt;
+         &lt;button class = "button icon icon-left ion-ios-close-outline"
+            ng-click = "closeModal()"&gt;Close Modal&lt;/button&gt;
+      &lt;/ion-content&gt;
+   &lt;/ion-modal-view&gt;
+&lt;/script&gt;
+</pre>
+<p>The way we showed in last example is when <b>script</b> tag is used as a container to our modal inside some existing HTML file. The second way is to create new template file inside <b>templates</b> folder. We will use the same code as in our last example but we will remove <b>script</b> tags and we also need to change <b>fromTemplateUrl</b> in  controller to connect modal with new created template.</p>
+<hr><h4>Controller Code</h4>
+<pre class="prettyprint notranslate">
+.controller('MyController', function($scope, $ionicModal) {
+
+   $ionicModal.fromTemplateUrl('templates/modal-template.html', {
+      scope: $scope,
+      animation: 'slide-in-up',
+   }).then(function(modal) {
+      $scope.modal = modal;
+   });
+	
+   $scope.openModal = function() {
+      $scope.modal.show();
+   };
+	
+   $scope.closeModal = function() {
+      $scope.modal.hide();
+   };
+	
+   //Cleanup the modal when we're done with it!
+   $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+   });
+	
+   // Execute action on hide modal
+   $scope.$on('modal.hidden', function() {
+      // Execute action
+   });
+	
+   // Execute action on remove modal
+   $scope.$on('modal.removed', function() {
+      // Execute action
+   });
+});
+</pre>
+<hr><h4>HTML Code</h4>
+<pre class="prettyprint notranslate">
+&lt;ion-modal-view&gt;
+   &lt;ion-header-bar&gt;
+      &lt;h1 class = "title"&gt;Modal Title&lt;/h1&gt;
+   &lt;/ion-header-bar&gt;
+	
+   &lt;ion-content&gt;
+      &lt;button class = "button icon icon-left ion-ios-close-outline"
+         ng-click = "closeModal()"&gt;Close Modal&lt;/button&gt;
+   &lt;/ion-content&gt;
+&lt;/ion-modal-view&gt;
+</pre>
+<p>Third way of using Ionic modal is by inserting HTML inline. We will use <b>fromTemplate</b> instead of <b>fromTemplateUrl</b>.</p>
+<hr><h4>Controller Code</h4>
+<pre class="prettyprint notranslate">
+.controller('MyController', function($scope, $ionicModal) {
+   $scope.modal = $ionicModal.fromTemplate( '&lt;ion-modal-view&gt;' +
+      ' &lt;ion-header-bar&gt;' +
+         '&lt;h1 class = "title"&gt;Modal Title&lt;/h1&gt;' +
+      '&lt;/ion-header-bar&gt;' +
+		
+      '&lt;ion-content&gt;'+
+         '&lt;button class = "button icon icon-left ion-ios-close-outline"
+            ng-click = "closeModal()"&gt;Close Modal&lt;/button&gt;' +
+      '&lt;/ion-content&gt;' +
+		
+   '&lt;/ion-modal-view&gt;', {
+      scope: $scope,
+      animation: 'slide-in-up'
+   })
+
+   $scope.openModal = function() {
+      $scope.modal.show();
+   };
+	
+   $scope.closeModal = function() {
+      $scope.modal.hide();
+   };
+	
+   //Cleanup the modal when we're done with it!
+   $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+   });
+	
+   // Execute action on hide modal
+   $scope.$on('modal.hidden', function() {
+      // Execute action
+   });
+	
+   // Execute action on remove modal
+   $scope.$on('modal.removed', function() {
+      // Execute action
+   });
+});
+</pre>
+<p>All tree examples will have the same effect. We will create button to trigger <b>$ionicModal.show()</b> to open modal.</p>
+<hr><h4>HTML Code</h4>
+<pre class="prettyprint notranslate">
+&lt;button class = "button" ng-click = "openModal()"&gt;&lt;/button&gt;
+</pre>
+<p>When we open modal, it will contain button that will be used for closing it. We created this button in HTML template.</p>
+<p>There are also other options for modal optimization. We already showed how to use <b>scope</b> and <b>animation</b>. The table below shows other options.</p>
+<table class="table table-bordered">
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Detail</th>       
+</tr>
+<tr>
+<th>focusFirstInput</th>
+<td>boolean</td>
+<td>It will auto focus first input of the modal.</td>
+</tr>
+<tr>
+<th>backdropClickToClose</th>
+<td>boolean</td>
+<td>It will enable closing the modal when backdrop is tapped. Default value is true.</td>
+</tr>
+<tr>
+<th>hardwareBackButtonClose </th>
+<td>boolean</td>
+<td>It will enable closing the modal when hardware back button is clicked. Default value is true.</td>
+</tr>     
+</table>
+
+         
+         
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

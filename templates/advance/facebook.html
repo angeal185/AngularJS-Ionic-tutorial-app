@@ -1,0 +1,177 @@
+<ion-view view-title="Ionic - Facebook">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p>This plugin is used for connecting to Facebook API. Before you start integrating Facebook, you need to create Facebook app <a rel="nofollow" href="https://developers.facebook.com/" target="_blank">here</a>. You will create web app and then skip the quick start screen. Then you need to add website platform on the <b>settings</b> page. You can use following code snippet for the site URL while in development.</p>
+<pre class="result notranslate">
+http://localhost:8100/
+</pre>
+<p>After that you need to add <b>Valid OAuth redirect URIs</b> on the <b>settings/advanced</b> page. Just copy the following two urls.</p>
+<pre class="result notranslate">
+https://www.facebook.com/connect/login_success.html
+</pre>
+<p></p>
+<pre class="result notranslate">
+http://localhost:8100/oauthcallback.html
+</pre><hr>
+<h4>Installing Facebook Plugin</h4>
+<p>We did all the steps above to tackle some issues that often appear when using this plugin. This plugin is hard to set up because there are a lot of steps involved and documentation doesn't cover all of them. There are also some known compatibility issues with other Cordova plugins so we will use <b>Teleric verified plugin</b> version in our app. We will start by installing browser platform to our app from the command prompt.</p>
+<pre class="result notranslate">
+C:\Users\Username\Desktop\MyApp>ionic platform add browser
+</pre>
+<p>Next we need to do is to add root element on top of the <b>body</b> tag in <b>index.html</b>.</p>
+<hr><h4>index.html</h4>
+<pre class="prettyprint notranslate">
+&lt;div id = "fb-root"&gt;&lt;/div&gt;
+</pre>
+<p>Now we will add Cordova Facebook plugin to our app. You need to change <b>APP_ID</b> and <b>APP_NAME</b> to match the Facebook app you created before.</p>
+<pre class="result notranslate">
+C:\Users\Username\Desktop\MyApp>cordova -d plugin add 
+   https://github.com/Telerik-Verified-Plugins/Facebook/ 
+   --variable APP_ID = "123456789" --variable APP_NAME = "FbAppName"
+</pre>
+<p>Now open <b>index.html</b> and add the following code after your <b>body</b> tag. Again you need to make sure that the <b>appId</b> and <b>version</b> are matching the Facebook app you created. This will ensure that Facebook SDK is loaded asynchronously without blocking the rest of the app.</p>
+<hr><h4>index.html</h4>
+<pre class="prettyprint notranslate">
+&lt;script&gt;
+   window.fbAsyncInit = function() {
+      FB.init({
+         appId      : '123456789',
+         xfbml      : true,
+         version    : 'v2.4'
+      });
+   };
+
+   (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+	
+&lt;/script&gt;
+</pre>
+<hr><h4>Angular Service</h4>
+<p>Since we installed everything we need to create service that will be our connection to the Facebook. These things can be done with less code inside controller, but we try to follow the best practices so we will use Angular service. The following code is showing entire service. We will explain it later.</p>
+<hr><h4>services.js</h4>
+<pre class="prettyprint notranslate">
+.service('Auth', function($q, $ionicLoading) {
+
+   this.getLoginStatus = function() {
+      var defer = $q.defer();
+
+      FB.getLoginStatus(function(response) {
+		
+         if (response.status === "connected") {
+            console.log(JSON.stringify(response));
+         } else {
+            console.log("Not logged in");
+         }
+      });
+
+      return defer.promise;
+   }
+   
+
+   this.loginFacebook = function() {
+      var defer = $q.defer();
+
+      FB.login(function(response) {
+		
+         if (response.status === "connected") {
+            console.log(JSON.stringify(response));
+         } else {
+            console.log("Not logged in!");
+         }
+      });
+
+      return defer.promise;
+   }
+
+   this.logoutFacebook = function() {
+      var defer = $q.defer();
+
+      FB.logout(function(response) {
+         console.log('You are logged out!');
+      });
+
+      return defer.promise;
+   }
+
+   this.getFacebookApi = function() {
+      var defer = $q.defer();
+
+      FB.api("me/?fields = id,email", [], function(response) {
+		
+         if (response.error) {
+            console.log(JSON.stringify(response.error));
+         } else {
+            console.log(JSON.stringify(response));
+         }
+      });
+
+      return defer.promise;
+   }
+
+});
+</pre>
+<p>In the above service we are creating four functions. First three are self explanatory. The fourth function is used for connecting to Facebook graph API. It will return <b>id</b> and <b>email</b> from the Facebook user. We are creating promise objects to handle asynchronic JavaScript functions. Now we need to write our controller that will call those functions. We will call each function separately for better understanding, but you will probably need to mix some of them together to get desired effect.</p>
+<hr><h4>Controller Code</h4>
+<pre class="prettyprint notranslate">
+.controller('MyCtrl', function($scope, Auth, $ionicLoading) {
+
+   $scope.checkLoginStatus = function() {
+      getLoginUserStatus();
+   }
+
+   $scope.loginFacebook = function(userData) {
+      loginFacebookUser();
+   };
+
+   $scope.facebookAPI = function() {
+      getFacebookUserApi();
+   }
+
+   $scope.logoutFacebook = function() {
+      logoutFacebookUser();
+   };
+
+   function loginFacebookUser() {
+      return Auth.loginFacebook();
+   }
+
+   function logoutFacebookUser() {
+      return Auth.logoutFacebook();
+   }
+
+   function getFacebookUserApi() {
+      return Auth.getFacebookApi();
+   }
+
+   function getLoginUserStatus() {
+      return Auth.getLoginStatus();
+   }
+
+})
+</pre>
+<p>You are probably wondering why didn't we returned <b>Auth</b> service directly from the function expressions (first four functions). The reason for this is that you will probably want to add some more behavior after the Auth function is returned. You might send some data to your database, change the route after login etc. This can be easily done by using JavaScript <b>then()</b> method to handle all the asynchronous operations instead of callbacks.</p>
+<p>Now we need to allow users to interact with the app. Our HTML will contain four buttons for calling four functions we created.</p>
+<hr><h4>HTML Code</h4>
+<pre class="prettyprint notranslate">
+&lt;button class = "button" ng-click = "loginFacebook()"&gt;LOG IN&lt;/button&gt;
+&lt;button class = "button" ng-click = "logoutFacebook()"&gt;LOG OUT&lt;/button&gt;
+&lt;button class = "button" ng-click = "checkLoginStatus()"&gt;CHECK&lt;/button&gt;
+&lt;button class = "button" ng-click = "facebookAPI()"&gt;API&lt;/button&gt;
+</pre>
+<p>When user tap <b>LOG IN</b> button facebook screen will appear. The user will be redirected to the app after the login is succesfull.</p>
+<hr />
+
+         
+             
+         
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

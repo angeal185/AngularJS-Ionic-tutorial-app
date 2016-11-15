@@ -1,0 +1,58 @@
+<ion-view view-title="Ionic - Footer">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+      <div class="IOimgsize">
+    <hr />
+<p><b>Ionic footer </b> is placed at the bottom of the app screen. Working with footers is almost the same as working with headers.</p>
+          <hr />
+<h4>Adding Footer</h4>
+<p>The main class for Ionic footers is <b>bar</b> (the same as header). When you want to add footer to your screens you need to add <b>bar-footer</b> class to your element after the main <b>bar</b> class. Since we want to use our footer on every screen in the app, we will add it to the <b>body</b> of the <b>index.html</b> file. We will also add title for our footer.</p>
+<pre class="prettyprint notranslate">
+&lt;div class="bar bar-footer"&gt;
+   &lt;h1 class="title"&gt;Footer&lt;/h1&gt;
+&lt;/div&gt;
+</pre>
+<hr />
+<h4>Footer Colors</h4>
+<p>If you want to style your footer you just need to add appropriate color class to it. When you style your elements you need to add your main element class as prefix to your color class. Since we are styling footer bar, the prefix class will be <b>bar</b> and color class that we want to use in this example is <b>assertive</b> (red).</p>
+<pre class="prettyprint notranslate">
+&lt;div class="bar bar-footer bar-assertive"&gt;
+   &lt;h1 class="title"&gt;Footer&lt;/h1&gt;
+&lt;/div&gt;
+</pre>
+<p>You can use either of the following nine classes to give a color of your choice to your app footer:</p>
+<table class="src">
+<tr><th>Color Class</th><th>Description</th><th>Result</th></tr>
+<tr><th>bar-light</th><td>To be used for white color</td><td style="background:#ffffff">&nbsp;</td></tr>
+<tr><th>bar-stable</th><td>To be used for light grey color</td><td style="background:#eeee">&nbsp;</td></tr>
+<tr><th>bar-positive</th> <td>To be used for blue color</td><td style="background:#387ef5">&nbsp;</td></tr>
+<tr><th>bar-calm</th><td>To be used for light blue color</td><td style="background:#11c1f3">&nbsp;</td></tr>
+<tr><th>bar-balanced</th> <td>To be used for green color</td><td style="background:#33cd5f">&nbsp;</td></tr>
+<tr><th>bar-energized</th><td>To be used for yellow color</td><td style="background:#ffc900">&nbsp;</td></tr>
+<tr><th>bar-assertive</th><td>To be used for red color</td><td style="background:#ef473a">&nbsp;</td></tr>
+<tr><th>bar-royal</th><td>To be used for violet color</td><td style="background:#886aea">&nbsp;</td></tr>
+<tr><th>bar-dark</th><td>To be used for black color</td><td style="background:#444444">&nbsp;</td></tr>
+</table>
+<hr />
+<h4>Footer Elements</h4>
+<p>Footers can contain elements inside it. Most of the time you will need to add buttons with icons inside a footer.</p>
+<p>The first button added will always be in the left corner. The last one will be placed on the right. The buttons in between will be grouped  next to the first one on the left side of your footer. In following example you can also notice that we use <b>icon</b> class to add icons on top of the buttons.</p>
+<pre class="prettyprint notranslate">
+&lt;div class="bar bar-footer bar-assertive"&gt;
+   &lt;button class="button icon ion-navicon"&gt;&lt;/button&gt;
+   &lt;button class="button icon ion-home"&gt;&lt;/button&gt;
+   &lt;button class="button icon ion-star"&gt;&lt;/button&gt;
+   &lt;button class="button icon ion-checkmark-round"&gt;&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+<p>If you want to move your button to the right you can add <b>pull-right</b> class.</p>
+<pre class="prettyprint notranslate">
+&lt;div class="bar bar-footer bar-assertive"&gt;
+   &lt;button class="button icon ion-navicon pull-right"&gt;&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+<hr />
+
+    </div>  
+      <br><br>
+  </ion-content>
+</ion-view>

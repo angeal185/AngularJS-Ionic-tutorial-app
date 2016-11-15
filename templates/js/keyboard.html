@@ -1,0 +1,27 @@
+<ion-view view-title="Ionic - JS Keyboard">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p>Keyboard is one of the automated features in Ionic. This means that Ionic can recognize when there is a need to open keyboard.</p>
+         <hr>
+<h4>Using Keyboard</h4>
+<p>There are some functionalities that developers can adjust when working with Ionic keyboard. When you want to hide some elements while keyboard is open, you can use <b>hide-on-keyboard-open</b> class. To show you how this works we created input and button that needs to be hidden when keyboard is open.</p>
+<pre class="prettyprint notranslate">
+&lt;label class = "item item-input"&gt;
+   &lt;input type = "text" placeholder = "Input 1"&gt;
+&lt;/label&gt;
+
+&lt;button class = "button button-block hide-on-keyboard-open"&gt;
+   button
+&lt;/button&gt;
+</pre>
+<p>Now when we tap on input field the keyboard will open automatically and button will become hidden.</p>
+<p>One nice feature of Ionic is that it will adjust elements on screen so your focused element is always visible when keyboard is open. Image below shows ten Input forms and the last one is blue.</p>
+<p>When we tap the blue form, Ionic will adjust our screen so the blue form is always visible.</p>
+<h3>NOTE</h3>
+<p>This will work only if the screen is within a directive that has a <b>Scroll View</b>. If you start with one of the Ionic templates you will notice that all templates use <b>ion-content</b> directive as a container to other screen elements so the Scroll View is always applied.</p>
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

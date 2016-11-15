@@ -1,0 +1,25 @@
+<ion-side-menus enable-menu-with-back-views="false" overflow-scroll="true">
+    <ion-side-menu-content overflow-scroll="true">
+        <ion-nav-bar class="bar-positive">
+            <ion-nav-back-button> </ion-nav-back-button>
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="right"> </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="right">
+        <ion-content class="menu" overflow-scroll="true">
+            <div class="menu_div" align="center">
+                <p class="Ionic positive">Ionic</p> <i class="ion-ionic f48" style="margin-left:30px"></i> </div>
+            <ion-list>
+                <a menu-close class="item item-icon-left" href="#/app/home"> <i class="icon ion-ios-arrow-left"></i> Ionic Home </a>
+                <a menu-close class="item item-icon-left" href="#/app/basic"> <i class="icon ion-ios-arrow-left"></i> Ionic Basics </a>
+                <a menu-close class="item item-icon-left" href="#/app/css"> <i class="icon ion-ios-arrow-left"></i> Ionic CSS </a>
+                <a menu-close class="item item-icon-left" href="#/app/javascript"> <i class="icon ion-ios-arrow-left"></i> Ionic Javascript </a>
+                <a menu-close class="item item-icon-left" href="#/app/advance"> <i class="icon ion-ios-arrow-left"></i> Ionic Advanced </a>
+                <a menu-close class="item item-icon-left" href="#/app/contact"> <i class="icon ion-ios-arrow-left"></i> About </a>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

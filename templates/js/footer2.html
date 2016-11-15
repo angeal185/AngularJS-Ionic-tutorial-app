@@ -1,0 +1,63 @@
+<ion-view view-title="Ionic - JS Footer">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p>This directive will add footer bar at the bottom of the screen.</p>
+<hr><h4>Using Footer</h4>
+<p>Ionic footer can be added by applying <b>ion-footer-bar</b> class. Working with it is the same as working with header. We can add title and place it left, center or right by using <b>align-title</b> attribute, and with prefix <b>bar</b> we can Ionic colors. Let's create red colored footer with the title in the middle.</p>
+
+<pre class="prettyprint notranslate">    
+&lt;ion-footer-bar align-title="center" class="bar-assertive"&gt;
+  &lt;h1 class="title"&gt;Title!&lt;/h1&gt;
+&lt;/ion-footer-bar&gt;
+</pre>
+<hr>
+<hr><h4>Adding Elements</h4>
+
+<p>We can add buttons icons or other elements to ion-footer-bar and their styling will be applied. Let's add button and Icon to our footer.</p>
+
+<pre class="prettyprint notranslate">
+&lt;ion-footer-bar class="bar-assertive"&gt;
+
+  &lt;div class="buttons"&gt;
+      &lt;button class="button"&gt;Button&lt;/button&gt;
+  &lt;/div&gt;
+  
+  &lt;h1 class="title"&gt;Footer&lt;/h1&gt;
+
+  &lt;div class="buttons"&gt;
+      &lt;button class="button icon ion-home"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+
+&lt;/ion-footer-bar&gt;
+</pre>
+<hr>
+<hr><h4>Adding Sub Footer</h4>
+<p>We showed you how to use sub header. The same way can be created sub footer. It will be located above the footer bar. All we need to do is add <b>bar-subfooter</b> class to our <b>ion-footer-bar</b> element. In example that follows we will add sub-footer above the footer bar we previously created.</p>
+<hr>
+<pre class="prettyprint notranslate">
+&lt;ion-footer-bar class="bar-subfooter bar-positive"&gt;
+
+  &lt;h1 class="title"&gt;Sub Footer&lt;/h1&gt;
+
+&lt;/ion-footer-bar&gt;
+
+&lt;ion-footer-bar class="bar-assertive"&gt;
+
+  &lt;div class="buttons"&gt;
+      &lt;button class="button"&gt;Button&lt;/button&gt;
+  &lt;/div&gt;
+  
+  &lt;h1 class="title"&gt;Footer&lt;/h1&gt;
+
+  &lt;div class="buttons" ng-click="doSomething()"&gt;
+      &lt;button class="button icon ion-home"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+
+&lt;/ion-footer-bar&gt;
+</pre><hr>
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>

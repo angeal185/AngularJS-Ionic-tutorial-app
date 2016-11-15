@@ -1,0 +1,169 @@
+<ion-view view-title="Ionic - JS Side Box">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+     <div class="IOimgsize"> 
+         <hr />
+         <p>Slide box contains pages that can be changed by swiping the content screen.</p>
+<hr><h4>Using Slide Box</h4>
+<p>The usage of the slide box is simple. You just need to add <b>ion-slide-box</b> as a container and <b>ion-slide</b> with box class inside that container. We will add height and border to our boxes for better visibility.</p>
+<hr><h4>HTML Code</h4>
+<pre class="prettyprint notranslate">
+&lt;ion-slide-box&gt;
+
+   &lt;ion-slide&gt;
+      &lt;div class = "box box1"&gt;
+         &lt;h1&gt;Box 1&lt;/h1&gt;
+      &lt;/div&gt;
+   &lt;/ion-slide&gt;
+
+   &lt;ion-slide&gt;
+      &lt;div class = "box box2"&gt;
+         &lt;h1&gt;Box 2&lt;/h1&gt;
+      &lt;/div&gt;
+   &lt;/ion-slide&gt;
+
+   &lt;ion-slide&gt;
+      &lt;div class = "box box3"&gt;
+         &lt;h1&gt;Box 3&lt;/h1&gt;
+      &lt;/div&gt;
+   &lt;/ion-slide&gt;
+
+&lt;/ion-slide-box&gt;
+</pre>
+<pre class="prettyprint notranslate">
+.box1, box2, box3 {
+   height: 300px;
+   border: 2px solid blue;
+}
+</pre>
+<p>We can change the box by dragging the content to the right. We can also drag to the left to show previous box.</p>
+<p>There are various attributes that can be used for controlling slide box behavior.</p>
+<hr><h4>Delegate Methods</h4>
+<table class="table table-bordered">
+<tr>
+<th style="width:28%;">Attribute</th>
+<th>Type</th>
+<th>Details</th>     
+</tr>
+<tr>
+<th>does-continue</th>
+<td>boolean</td>
+<td>Should slide box loop when first or last box is reached.</td>
+</tr>
+<tr>
+<th>auto-play</th>
+<td>boolean</td>
+<td>Should slide box automatically slide.</td>
+</tr>
+<tr>
+<th>slide-interval</th>
+<td>number</td>
+<td>Time value between auto slide change in milliseconds. Default value is 4000.</td>
+</tr>
+<tr>
+<th>show-pager</th>
+<td>boolean</td>
+<td>Should pager be visible.</td>
+</tr>
+<tr>
+<th>pager-click</th>
+<td>expression</td>
+<td>Called when a pager is tapped (if pager is visible). <b>$index</b> is used to match with different slides.</td>
+</tr>
+<tr>
+<th>on-slide-changed</th>
+<td>expression</td>
+<td>Called when slide is changed. <b>$index</b> is used to match with different slides.</td>
+</tr>
+<tr>
+<th>active-slide</th>
+<td>expression</td>
+<td>Used as a model to bind the current slide index to.</td>
+</tr>
+<tr>
+<th>delegate-handle</th>
+<td>string</td>
+<td>Used for slide box identification with <b>$ionicSlideBoxDelegate</b>.</td>
+</tr>
+</table>
+<hr><h4>Slide Box Delegate</h4>
+<p><b>$ionicSlideBoxDelegate</b> is service used for controlling all slide boxes. We need to inject it to the controller.</p>
+<hr><h4>Controller Code</h4>
+<pre class="prettyprint notranslate">
+.controller('MyCtrl', function($scope, $ionicSlideBoxDelegate) {
+   $scope.nextSlide = function() {
+      $ionicSlideBoxDelegate.next();
+   }
+})
+</pre>
+<hr><h4>HTML Code</h4>
+<pre class="prettyprint notranslate">
+&lt;button class = "button button-icon icon ion-navicon" ng-click = "nextSlide()"&gt;&lt;/button&gt;
+</pre>
+<p>The following table shows <b>$ionicSlideBoxDelegate</b> methods.</p>
+<hr><h4>Delegate Methods</h4>
+<table class="table table-bordered" style="font-size:11px;">
+<tr>
+<th>Method</th>
+<th>parms</th>
+<th>Type</th>
+<th>Details</th>     
+</tr>
+<tr>
+<th>slide (parm1, parm2)</th>
+<td>to, speed</td>
+<td>number, number</td>
+<td>parm <b>to</b> represents index to slide to. <b>speed</b> determines how fast is the change in milliseconds.</td>
+</tr>
+<tr>
+<th>enable Slide(parm1)</th>
+<td>should Enable</td>
+<td>boolean</td>
+<td>Used for enambling or disabling sliding.</td>
+</tr>
+<tr>
+<th>previous (parm1)</th>
+<td>speed</td>
+<td>number</td>
+<td>The value in miliseconds the change should take.</td>
+</tr>
+<tr>
+<th>stop()</th>
+<td>/</td>
+<td>/</td>
+<td>Used to stop the sliding.</td>
+</tr>
+<tr>
+<th>start()</th>
+<td>/</td>
+<td>/</td>
+<td>Used to start the sliding.</td>
+</tr>
+<tr>
+<th>currentIndex()</th>
+<td>/</td>
+<td>number</td>
+<td>Returns index of the curent slide.</td>
+</tr>
+<tr>
+<th>slidesCount()</th>
+<td>/</td>
+<td>number</td>
+<td>Returns total number of the slides.</td>
+</tr>
+<tr>
+<th>$getByHandle (parm1)</th>
+<td>handle</td>
+<td>string</td>
+<td><p>Used to connect methods to the particular slide box with the same handle.</p>
+<b>$ionicSlideBoxDelegate.$getByHandle
+   ('my-handle').start();</b></td>
+</tr>
+</table>
+
+         
+         
+         <hr />
+      </div>
+      <br><br>
+  </ion-content>
+</ion-view>
